@@ -6,7 +6,7 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import wordkeep.apiEnglish.lista.Lista;
+import wordkeep.apiEnglish.wordlist.WordList;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -31,9 +31,9 @@ public class Word {
 
     @ManyToMany
     @JoinTable(
-            name = "word_lista",
+            name = "word_word_list",
             joinColumns = @JoinColumn(name = "word_id"),
-            inverseJoinColumns = @JoinColumn(name = "lista_id")
+            inverseJoinColumns = @JoinColumn(name = "word_list_id")
     )
-    private List<Lista> listas;
+    private List<WordList> wordLists;
 }
