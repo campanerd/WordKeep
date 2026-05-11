@@ -11,7 +11,11 @@ http:
     data: |-
       {
         "word":"teste",
-        "translation":"test"
+        "translation":"test",
+        "sourceLanguage":"test1",
+        "targetLanguage":"test2",
+        "listaId":"123"
+        
       }
   auth: inherit
 
