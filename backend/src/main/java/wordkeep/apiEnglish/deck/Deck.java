@@ -1,4 +1,4 @@
-package wordkeep.apiEnglish.wordlist;
+package wordkeep.apiEnglish.deck;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -10,22 +10,27 @@ import wordkeep.apiEnglish.word.Word;
 import java.time.LocalDateTime;
 import java.util.List;
 
-@Table(name = "word_lists")
-@Entity(name = "WordList")
+@Table(name = "decks")
+@Entity(name = "Deck")
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(of = "id")
-public class WordList {
+public class Deck {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String name;
 
+    @Column(columnDefinition = "TEXT")
     private LocalDateTime createdAt;
 
-    @ManyToMany(mappedBy = "wordLists")
+    @ManyToMany(mappedBy = "decks")
     private List<Word> words;
 
+    public Deck(DadosCadastroDeck dados) {
+        this.name = dados.name();
+        this.createdAt = LocalDateTime.now();
+    }
 }

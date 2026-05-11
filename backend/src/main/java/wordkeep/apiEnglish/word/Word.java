@@ -6,7 +6,7 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import wordkeep.apiEnglish.wordlist.WordList;
+import wordkeep.apiEnglish.deck.Deck;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -27,13 +27,23 @@ public class Word {
     private String sourceLanguage;
     private String targetLanguage;
 
+    @Column(columnDefinition = "TEXT")
     private LocalDateTime createdAt;
 
     @ManyToMany
     @JoinTable(
-            name = "word_word_list",
+            name = "words_decks",
             joinColumns = @JoinColumn(name = "word_id"),
-            inverseJoinColumns = @JoinColumn(name = "word_list_id")
+            inverseJoinColumns = @JoinColumn(name = "deck_id")
     )
-    private List<WordList> wordLists;
+    private List<Deck> decks;
+
+    public Word(DadosCadastroWord dados) {
+
+        this.word = dados.word();
+        this.translation = dados.translation();
+        this.sourceLanguage = dados.sourceLanguage();
+        this.targetLanguage = dados.targetLanguage();
+        this.createdAt = LocalDateTime.now();
+    }
 }
