@@ -1,0 +1,22 @@
+info:
+  name: Cadastro de Palavras
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: http://localhost:8080/words
+  body:
+    type: json
+    data: |-
+      {
+        "word":"teste",
+        "translation":"test"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
