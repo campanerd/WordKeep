@@ -9,6 +9,8 @@ import wordkeep.apiEnglish.deck.DadosCadastroDeck;
 import wordkeep.apiEnglish.deck.DadosListagemDeck;
 import wordkeep.apiEnglish.deck.Deck;
 import wordkeep.apiEnglish.deck.DeckRepository;
+import wordkeep.apiEnglish.word.DadosListagemWord;
+import wordkeep.apiEnglish.word.WordRepository;
 
 import java.util.List;
 
@@ -19,6 +21,9 @@ public class DeckController {
     @Autowired
     private DeckRepository repository;
 
+    @Autowired
+    private WordRepository wordRepository;
+
     @PostMapping
     @Transactional
     public void cadastrar(@RequestBody @Valid DadosCadastroDeck dados){
@@ -28,5 +33,10 @@ public class DeckController {
     @GetMapping
     public List<DadosListagemDeck> listar() {
         return repository.findAll().stream().map(DadosListagemDeck::new).toList();
+    }
+
+    @GetMapping("/{id}/words")
+    public List<DadosListagemWord> listarPalavras(@PathVariable Long id) {
+        return wordRepository.findByDecksId(id).stream().map(DadosListagemWord::new).toList();
     }
 }
