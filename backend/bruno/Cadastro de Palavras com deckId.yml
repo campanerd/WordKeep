@@ -1,5 +1,5 @@
 info:
-  name: Cadastro de Palavras
+  name: Cadastro de Palavras com deckId
   type: http
   seq: 3
 
@@ -10,9 +10,11 @@ http:
     type: json
     data: |-
       {
-        "translation":"testtwo",
+        "word":"teste4",
+        "translation":"testfour",
         "sourceLanguage":"en",
-        "targetLanguage": "pt"
+        "targetLanguage": "pt",
+        "deckId":1
       }
   auth: inherit
 

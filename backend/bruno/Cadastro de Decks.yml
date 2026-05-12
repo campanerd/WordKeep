@@ -1,18 +1,16 @@
 info:
-  name: Cadastro de Palavras
+  name: Cadastro de Decks
   type: http
-  seq: 3
+  seq: 2
 
 http:
   method: POST
-  url: http://localhost:8080/words
+  url: http://localhost:8080/decks
   body:
     type: json
     data: |-
       {
-        "translation":"testtwo",
-        "sourceLanguage":"en",
-        "targetLanguage": "pt"
+        "name":"teste12/05"
       }
   auth: inherit
 
