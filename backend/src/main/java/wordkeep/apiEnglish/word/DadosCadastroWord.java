@@ -1,4 +1,17 @@
 package wordkeep.apiEnglish.word;
 
-public record DadosCadastroWord(String word, String translation, String sourceLanguage, String targetLanguage, Long deckId) {
+import jakarta.validation.constraints.NotBlank;
+
+public record DadosCadastroWord(
+
+        @NotBlank
+        String word,
+
+        String translation,
+
+        String sourceLanguage,
+
+        String targetLanguage,
+
+        Long deckId) {
 }

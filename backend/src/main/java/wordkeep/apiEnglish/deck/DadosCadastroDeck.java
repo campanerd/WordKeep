@@ -1,4 +1,8 @@
 package wordkeep.apiEnglish.deck;
 
-public record DadosCadastroDeck(String name) {
+import jakarta.validation.constraints.NotBlank;
+
+public record DadosCadastroDeck(
+        @NotBlank
+        String name) {
 }

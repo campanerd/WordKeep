@@ -1,7 +1,9 @@
 package wordkeep.apiEnglish.controller;
 
 
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,7 +20,8 @@ public class DeckController {
     private DeckRepository repository;
 
     @PostMapping
-    public void cadastrar(@RequestBody DadosCadastroDeck dados){
+    @Transactional
+    public void cadastrar(@RequestBody @Valid DadosCadastroDeck dados){
         repository.save(new Deck(dados));
     }
 }
