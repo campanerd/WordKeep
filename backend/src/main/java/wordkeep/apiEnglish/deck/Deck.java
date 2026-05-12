@@ -1,6 +1,7 @@
 package wordkeep.apiEnglish.deck;
 
 import jakarta.persistence.*;
+import wordkeep.apiEnglish.config.LocalDateTimeConverter;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -23,7 +24,7 @@ public class Deck {
 
     private String name;
 
-    @Column(columnDefinition = "TEXT")
+    @Convert(converter = LocalDateTimeConverter.class)
     private LocalDateTime createdAt;
 
     @ManyToMany(mappedBy = "decks")

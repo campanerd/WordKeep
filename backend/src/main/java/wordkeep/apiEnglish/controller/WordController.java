@@ -6,18 +6,17 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import wordkeep.apiEnglish.word.DadosCadastroWord;
-import wordkeep.apiEnglish.word.Word;
-import wordkeep.apiEnglish.word.WordRepository;
+import wordkeep.apiEnglish.word.WordService;
 
 @RestController
 @RequestMapping("words")
 public class WordController {
 
     @Autowired
-    private WordRepository repository;
+    private WordService service;
 
     @PostMapping
     public void cadastrar(@RequestBody DadosCadastroWord dados){
-        repository.save(new Word(dados));
+        service.cadastrar(dados);
     }
 }

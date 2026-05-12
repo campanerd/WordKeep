@@ -6,9 +6,12 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import jakarta.persistence.Convert;
+import wordkeep.apiEnglish.config.LocalDateTimeConverter;
 import wordkeep.apiEnglish.deck.Deck;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Table(name = "words")
@@ -27,7 +30,7 @@ public class Word {
     private String sourceLanguage;
     private String targetLanguage;
 
-    @Column(columnDefinition = "TEXT")
+    @Convert(converter = LocalDateTimeConverter.class)
     private LocalDateTime createdAt;
 
     @ManyToMany
@@ -45,5 +48,10 @@ public class Word {
         this.sourceLanguage = dados.sourceLanguage();
         this.targetLanguage = dados.targetLanguage();
         this.createdAt = LocalDateTime.now();
+        this.decks = new ArrayList<>();
+    }
+
+    public void adicionarDeck(Deck deck) {
+        this.decks.add(deck);
     }
 }
