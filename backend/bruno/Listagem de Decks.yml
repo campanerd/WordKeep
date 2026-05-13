@@ -1,11 +1,11 @@
 info:
-  name: Listagem de Decks por ID
+  name: Listagem de Decks
   type: http
-  seq: 5
+  seq: 8
 
 http:
   method: GET
-  url: http://localhost:8080/decks/1/words
+  url: ""
   auth: inherit
 
 settings:

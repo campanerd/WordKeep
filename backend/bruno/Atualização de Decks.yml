@@ -1,0 +1,22 @@
+info:
+  name: Atualização de Decks
+  type: http
+  seq: 7
+
+http:
+  method: PUT
+  url: http://localhost:8080/decks
+  body:
+    type: json
+    data: |-
+      {
+        "id": 1,
+        "name": "Vocabulary"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

@@ -1,20 +1,18 @@
 info:
-  name: Cadastro de Words com deckId
+  name: Atualização de Words
   type: http
-  seq: 3
+  seq: 6
 
 http:
-  method: POST
+  method: PUT
   url: http://localhost:8080/words
   body:
     type: json
     data: |-
       {
-        "word":"teste4",
-        "translation":"testfour",
-        "sourceLanguage":"en",
-        "targetLanguage": "pt",
-        "deckId":1
+        "id": 1,
+        "word": "hello",
+        "translation": "olá"
       }
   auth: inherit
 

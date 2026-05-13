@@ -1,0 +1,15 @@
+info:
+  name: Listagem de Words por deckId
+  type: http
+  seq: 5
+
+http:
+  method: GET
+  url: http://localhost:8080/decks/1/words
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
