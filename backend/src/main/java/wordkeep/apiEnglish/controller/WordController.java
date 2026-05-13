@@ -27,4 +27,11 @@ public class WordController {
     public List<DadosListagemWord> listar() {
         return wordRepository.findAll().stream().map(DadosListagemWord::new).toList();
     }
+
+    @Transactional
+    @PutMapping
+    public void atualizar(@RequestBody @Valid DadosAtualizacaoWord dados) {
+        
+
+    }
 }
