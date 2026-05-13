@@ -1,6 +1,7 @@
 package wordkeep.apiEnglish.word;
 
 import jakarta.persistence.*;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -22,7 +23,8 @@ import java.util.List;
 @EqualsAndHashCode(of = "id")
 public class Word {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String word;
@@ -53,5 +55,14 @@ public class Word {
 
     public void adicionarDeck(Deck deck) {
         this.decks.add(deck);
+    }
+
+    public void atualizarInformacoes(@Valid DadosAtualizacaoWord dados) {
+        if (dados.word() != null) {
+            this.word = dados.word();
+        }
+        if (dados.translation() != null) {
+            this.translation = dados.translation();
+        }
     }
 }

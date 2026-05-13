@@ -1,6 +1,7 @@
 package wordkeep.apiEnglish.deck;
 
 import jakarta.persistence.*;
+import jakarta.validation.Valid;
 import wordkeep.apiEnglish.config.LocalDateTimeConverter;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -33,5 +34,11 @@ public class Deck {
     public Deck(DadosCadastroDeck dados) {
         this.name = dados.name();
         this.createdAt = LocalDateTime.now();
+    }
+
+    public void atualizarInformacoes(@Valid DadosAtualizacaoDeck dados) {
+        if (dados.name() != null ) {
+            this.name = dados.name();
+        }
     }
 }
