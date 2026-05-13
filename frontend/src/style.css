@@ -1,15 +1,8 @@
 body{
-   background-color: white;
+    background-color: white;
     margin: 0;
     padding: 0;
-
     font-family: 'Poppins', sans-serif;
-
-    min-height: 100vh;
-
-    display: flex;
-
-    flex-direction: column;
 }
 
 h1{
@@ -43,7 +36,7 @@ button:hover{
 }
 
 footer{
-
+    position: fixed;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -68,6 +61,7 @@ img{
 }
 img:hover{
     transform: translateY(-5px) scale(1.05);
+
 }
 .container-palavras{
 
