@@ -42,6 +42,12 @@ public class DeckController {
     public void atualizar(@RequestBody @Valid DadosAtualizacaoDeck dados){
         var deck = repository.getReferenceById(dados.id());
         deck.atualizarInformacoes(dados);
+    }
 
+    @DeleteMapping("{id}")
+    @Transactional
+    public void excluir(@PathVariable Long id) {
+        repository.deleteById(id);
     }
 }
+
