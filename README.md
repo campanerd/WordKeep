@@ -1,53 +1,94 @@
-Tradutor de Palavras
+# WordKeep 📚
 
-Este projeto é um tradutor de palavras desenvolvido com integração entre front-end, back-end e banco de dados.
+> 🚧 **Projeto em desenvolvimento** — funcionalidades podem mudar ao longo do tempo.
 
-Tecnologias utilizadas
-HTML
-CSS
-Java
-SQL
-API REST
-Como funciona
+WordKeep é uma aplicação para estudo de vocabulário em inglês. O usuário cadastra palavras com suas traduções, organiza em decks temáticos e pode revisá-las quando quiser.
 
-O usuário digita uma palavra na interface do site.
-O front-end envia a requisição para o back-end em Java através de uma API.
+---
 
-O sistema:
+## Tecnologias
 
-recebe a palavra
-processa a tradução
-armazena os dados em um banco SQL
-retorna o resultado para o usuário
-Estrutura do projeto
-Front-end
+**Backend**
+- Java 17
+- Spring Boot 3.4.5
+- Spring Data JPA
+- SQLite + Hibernate Community Dialects
+- Flyway (migrations)
+- Bean Validation
+- Lombok
 
-Responsável pela interface visual do sistema utilizando:
+**Frontend**
+- HTML
+- CSS
+- JavaScript
 
-HTML
-CSS
-Back-end
+---
 
-Desenvolvido em Java para:
+## Estrutura do projeto
 
-receber requisições da API
-processar os dados
-conectar com o banco de dados
-Banco de Dados
+```
+WordKeep/
+├── backend/         # API REST em Java Spring Boot
+│   ├── src/
+│   ├── bruno/       # Coleção de requisições (Bruno)
+│   └── pom.xml
+└── frontend/        # Interface web
+    └── src/
+```
 
-Utiliza SQL para armazenar:
+---
 
-palavras pesquisadas
-traduções
-histórico de consultas
-Objetivo
+## Funcionalidades
 
-O objetivo do projeto é praticar:
+- [x] Cadastro de palavras com tradução e idiomas
+- [x] Cadastro de decks (listas temáticas)
+- [x] Associação de palavras a decks
+- [x] Listagem de palavras e decks
+- [x] Listagem de palavras por deck
+- [x] Atualização de palavras e decks
+- [x] Prevenção de palavras duplicadas no mesmo deck
+- [ ] Remoção de palavras e decks
+- [ ] Tradução automática via API externa
+- [ ] Tratamento global de erros
 
-integração entre front-end e back-end
-consumo e criação de APIs
-conexão com banco de dados
-desenvolvimento web completo
-Autores
-Davi Campaner
-Vinicius Regazio
+---
+
+## Como executar
+
+### Pré-requisitos
+- Java 17+
+- Maven
+
+### Backend
+
+```bash
+cd backend
+mvn spring-boot:run
+```
+
+A API estará disponível em `http://localhost:8080`.
+
+### Frontend
+
+Abra o arquivo `frontend/src/index.html` em um servidor local (ex: Live Server no VS Code).
+
+---
+
+## Endpoints principais
+
+| Método | Rota                  | Descrição                        |
+|--------|-----------------------|----------------------------------|
+| POST   | `/words`              | Cadastrar palavra                |
+| GET    | `/words`              | Listar todas as palavras         |
+| PUT    | `/words`              | Atualizar palavra                |
+| POST   | `/decks`              | Cadastrar deck                   |
+| GET    | `/decks`              | Listar todos os decks            |
+| PUT    | `/decks`              | Atualizar deck                   |
+| GET    | `/decks/{id}/words`   | Listar palavras de um deck       |
+
+---
+
+## Autores
+
+- Davi Campaner
+- Vinicius Regazio
