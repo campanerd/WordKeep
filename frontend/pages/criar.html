@@ -7,24 +7,34 @@
     <link rel="stylesheet" href="../src/style.css">
 </head>
 <body>
-    <h1> WordKeep</h1>
+    <h1> Cadastro de palavra</h1>
     
     <div class="container">
         <div class="buttons">
              <a href="../index.html"> 
             <button>Retornar</button>
             </a>            
-        <!-- <input type="text" id="wordInput" placeholder="Digite uma palavra"> -->
         </div>
 
+        <input type="text" id="word" placeholder="Palavra"> 
+        <input type="text" id="translation" placeholder="Tradução"> 
+
+    </div>
     
-    <footer>
+        <button id="sendButton">
+            Salvar
+        </button>
+    
+    <ul id="lista"></ul>
 
-    <a href="https://github.com/campanerd">
-        <img src="../public/github.png">
-    </a>
 
-    <div class="text">
+     <footer>
+
+      <a href="https://github.com/campanerd">
+         <img src="../public/github.png">
+      </a>
+
+      <div class="text">
 
         <p>Desenvolvido por:</p>
 
@@ -33,7 +43,7 @@
             <strong><p>Vinicius Regazio</p></strong>
         </div>
 
-    </div>
+      </div>
 
     <a href="../https://github.com/regazzio">
         <img src="../public/github.png">
@@ -41,4 +51,5 @@
 
 </footer>
 </body>
+<script src="../src/script.js"></script>
 </html>
