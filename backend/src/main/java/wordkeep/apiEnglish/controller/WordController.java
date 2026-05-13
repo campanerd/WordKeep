@@ -31,7 +31,8 @@ public class WordController {
     @Transactional
     @PutMapping
     public void atualizar(@RequestBody @Valid DadosAtualizacaoWord dados) {
-        
+        var word = wordRepository.getReferenceById(dados.id());
+        word.atualizarInformacoes(dados);
 
     }
 }

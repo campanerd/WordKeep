@@ -5,10 +5,7 @@ import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
-import wordkeep.apiEnglish.deck.DadosCadastroDeck;
-import wordkeep.apiEnglish.deck.DadosListagemDeck;
-import wordkeep.apiEnglish.deck.Deck;
-import wordkeep.apiEnglish.deck.DeckRepository;
+import wordkeep.apiEnglish.deck.*;
 import wordkeep.apiEnglish.word.DadosListagemWord;
 import wordkeep.apiEnglish.word.WordRepository;
 
@@ -38,5 +35,13 @@ public class DeckController {
     @GetMapping("/{id}/words")
     public List<DadosListagemWord> listarPalavras(@PathVariable Long id) {
         return wordRepository.findByDecksId(id).stream().map(DadosListagemWord::new).toList();
+    }
+
+    @Transactional
+    @PutMapping
+    public void atualizar(@RequestBody @Valid DadosAtualizacaoDeck dados){
+        var deck = repository.getReferenceById(dados.id());
+        deck.atualizarInformacoes(dados);
+
     }
 }
