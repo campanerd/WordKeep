@@ -33,6 +33,11 @@ public class WordController {
     public void atualizar(@RequestBody @Valid DadosAtualizacaoWord dados) {
         var word = wordRepository.getReferenceById(dados.id());
         word.atualizarInformacoes(dados);
+    }
 
+    @DeleteMapping("{id}")
+    @Transactional
+    public void excluir(@PathVariable Long id) {
+        wordRepository.deleteById(id);
     }
 }
