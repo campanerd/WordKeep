@@ -5,7 +5,7 @@ button.addEventListener("click", async () => {
     const word = document.getElementById("word").value;
     const translation = document.getElementById("translation").value;
 
-    await fetch("http://localhost:8080/words", {
+    await fetch("http://192.168.1.42:8080/words", {
 
         method: "POST",
 
@@ -26,3 +26,25 @@ button.addEventListener("click", async () => {
 
 });
 
+async function carregarPalavras(){
+
+    const response = await fetch("http://192.168.1.42:8080/words");
+
+    const words = await response.json();
+
+    const lista = document.getElementById("lista");
+
+    lista.innerHTML = "";
+
+    words.forEach(word => {
+
+        lista.innerHTML += `
+            <li>
+                ${word.word} - ${word.translation}
+            </li>
+        `;
+
+    });
+
+}
+carregarPalavras();
