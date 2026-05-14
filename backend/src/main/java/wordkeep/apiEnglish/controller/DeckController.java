@@ -7,7 +7,6 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import wordkeep.apiEnglish.deck.*;
 import wordkeep.apiEnglish.word.DadosListagemWord;
-import wordkeep.apiEnglish.word.WordRepository;
 
 import java.util.List;
 
@@ -19,7 +18,7 @@ public class DeckController {
     private DeckRepository repository;
 
     @Autowired
-    private WordRepository wordRepository;
+    private DeckService service;
 
     @PostMapping
     @Transactional
@@ -34,7 +33,7 @@ public class DeckController {
 
     @GetMapping("/{id}/words")
     public List<DadosListagemWord> listarPalavras(@PathVariable Long id) {
-        return wordRepository.findByDecksId(id).stream().map(DadosListagemWord::new).toList();
+        return service.listarPalavras(id);
     }
 
     @Transactional
@@ -47,7 +46,7 @@ public class DeckController {
     @DeleteMapping("{id}")
     @Transactional
     public void excluir(@PathVariable Long id) {
-        repository.deleteById(id);
+        service.excluir(id);
     }
 }
 
