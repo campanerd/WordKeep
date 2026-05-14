@@ -1,78 +1,59 @@
 const button = document.getElementById("sendButton");
 
-// =========================
-// CRIAR DECK
-// =========================
+button.addEventListener("click", async () => {
 
-if (button) {
+    const name = document.getElementById("deck").value;
 
-    button.addEventListener("click", async () => {
+    await fetch("http://192.168.1.42:8080/decks", {
 
-        const deck = document.getElementById("deck").value;
+        method: "POST",
 
-        // impede criar deck vazio
-        if (!deck) return;
+        headers: {
+            "Content-Type": "application/json"
+        },
 
-        await fetch("http://localhost:8080/decks", {
-
-            method: "POST",
-
-            headers: {
-                "Content-Type": "application/json"
-            },
-
-            body: JSON.stringify({
-                name: deck
-            })
-
-        });
-
-        // limpa input
-        document.getElementById("deck").value = "";
-
-        carregarDecks();
+        body: JSON.stringify({
+           name: name
+        })
 
     });
 
-}
+    carregarDecks();
 
-// =========================
-// LISTAR DECKS
-// =========================
+});
 
-async function carregarDecks() {
+async function carregarDecks(){
 
-    const lista = document.getElementById("deckList");
-
-    // evita erro em páginas sem lista
-    if (!lista) return;
-
-    const response = await fetch("http://localhost:8080/decks");
+    const response = await fetch("http://192.168.1.42:8080/decks");
 
     const decks = await response.json();
 
-    lista.innerHTML = "";
+    const deckList = document.getElementById("deckList");
+
+    deckList.innerHTML = "";
 
     decks.forEach(deck => {
 
-        lista.innerHTML += `
-
-            <li class="deck-item">
-
-                <span class="deck-name">
-                    ${deck.name}
-                </span>
-
+        deckList.innerHTML += `
+            <li>
+                ${deck.name}
             </li>
-
         `;
 
     });
 
 }
 
-// =========================
-// INICIAR
-// =========================
+    lista.innerHTML = "";
+
+    words.forEach(word => {
+
+        lista.innerHTML += `
+            <li>
+                ${word.word} - ${word.translation}
+            </li>
+        `;
+
+    });
 
 carregarDecks();
