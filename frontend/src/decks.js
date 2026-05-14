@@ -43,17 +43,4 @@ async function carregarDecks(){
     });
 
 }
-
-    lista.innerHTML = "";
-
-    words.forEach(word => {
-
-        lista.innerHTML += `
-            <li>
-                ${word.word} - ${word.translation}
-            </li>
-        `;
-
-    });
-
 carregarDecks();
