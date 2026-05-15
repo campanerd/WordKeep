@@ -76,7 +76,7 @@ img:hover{
 }
 .container-palavras{
 
-       display: flex;
+    display: flex;
 
     justify-content: center;
 
@@ -139,19 +139,5 @@ img:hover{
     border-radius: 10px;
 
     border: 1px solid #ccc;
-
-}
-.editdelete{
-    background-color: blue;
-
-    color: white;
-
-    border: none;
-
-    padding: 8px 12px;
-
-    border-radius: 5px;
-
-    cursor: pointer;
 
 }
