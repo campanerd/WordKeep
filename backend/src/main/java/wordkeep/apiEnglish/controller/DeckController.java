@@ -12,7 +12,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("decks")
-@CrossOrigin(origins = "*")
 public class DeckController {
 
     @Autowired

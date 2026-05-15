@@ -76,7 +76,6 @@ async function editarPalavra(id) {
     const novaPalavra = prompt("Nova palavra:");
     const novaTraducao = prompt("Nova tradução:");
 
-    // cancela se usuário fechar prompt
     if (!novaPalavra || !novaTraducao) return;
 
     await fetch("http://192.168.1.42:8080/words", {
@@ -116,8 +115,5 @@ async function excluirPalavra(id) {
 
 }
 
-// =========================
-// INICIAR LISTA
-// =========================
 
 carregarPalavras();

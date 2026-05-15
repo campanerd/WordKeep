@@ -41,16 +41,7 @@ async function carregarDecks() {
         `;
     });
 }
-
-async function deletarDeck(id){
-    if (confirm("Tem certeza que deseja excluir este deck?")) {
-        await fetch(`http://192.168.42.1:8080/decks/${id}`, {
-            method: "DELETE"
-        });
-        carregarDecks();
-    }
     
-}
 async function editarDeck(id){
     const novoNome = prompt("Digite o novo nome do deck:");
     if (novoNome) {
@@ -66,5 +57,25 @@ async function editarDeck(id){
         });
         carregarDecks();
     }
-}
+} 
+window.deletarDeck = async function(id) {
+    const confirmar = confirm("Deseja excluir este deck?");
+    if (!confirmar) return;
+
+    try {
+        const response = await fetch(`http://192.168.1.42:8080/decks/${id}`, {
+            method: "DELETE"
+        });
+
+        if (response.ok) {
+            carregarDecks(); // Recarrega a lista
+        } else {
+            alert("Erro ao excluir o deck.");
+        }
+    } catch (error) {
+        console.error("Erro na requisição:", error);
+    }
+};
+
+
 carregarDecks();
