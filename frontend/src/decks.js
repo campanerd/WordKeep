@@ -65,9 +65,6 @@ async function editarDeck(id) {
     carregarDecks();
 }
 
-
-
-
    async function deletarDeck(id) {
 
     const confirmar = confirm("Deseja excluir esse deck?");
