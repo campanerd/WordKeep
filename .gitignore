@@ -36,3 +36,6 @@ build/
 *.db
 *.db-shm
 *.db-wal
+
+### Frontend config (contém IP local, não deve subir ao Git) ###
+frontend/src/config.js
