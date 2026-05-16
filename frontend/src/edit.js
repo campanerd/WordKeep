@@ -78,7 +78,6 @@ async function editarPalavra(id) {
     const novaPalavra = prompt("Nova palavra:");
     const novaTraducao = prompt("Nova tradução:");
 
-    // cancela se usuário fechar prompt
     if (!novaPalavra || !novaTraducao) return;
 
     await fetch(`${API_URL}/words`, {
@@ -118,8 +117,5 @@ async function excluirPalavra(id) {
 
 }
 
-// =========================
-// INICIAR LISTA
-// =========================
 
 carregarPalavras();
