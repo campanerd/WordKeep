@@ -1,3 +1,5 @@
+import { API_URL } from "./config.js";
+
 const button = document.getElementById("sendButton");
 
 button.addEventListener("click", async () => {
@@ -5,7 +7,7 @@ button.addEventListener("click", async () => {
     const word = document.getElementById("word").value;
     const translation = document.getElementById("translation").value;
 
-    await fetch("http://192.168.1.42:8080/words", {
+    await fetch(`${API_URL}/words`, {
 
         method: "POST",
 
@@ -28,7 +30,7 @@ button.addEventListener("click", async () => {
 
 async function carregarPalavras(){
 
-    const response = await fetch("http://192.168.1.42:8080/words");
+    const response = await fetch(`${API_URL}/words`);
 
     const words = await response.json();
 

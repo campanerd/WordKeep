@@ -1,10 +1,12 @@
+import { API_URL } from "./config.js";
+
 const button = document.getElementById("sendButton");
 
 button.addEventListener("click", async () => {
 
     const name = document.getElementById("deck").value;
 
-    await fetch("http://192.168.1.42:8080/decks", {
+    await fetch(`${API_URL}/decks`, {
 
         method: "POST",
 
@@ -24,7 +26,7 @@ button.addEventListener("click", async () => {
 
 async function carregarDecks(){
 
-    const response = await fetch("http://192.168.1.42:8080/decks");
+    const response = await fetch(`${API_URL}/decks`);
 
     const decks = await response.json();
 

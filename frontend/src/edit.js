@@ -1,3 +1,5 @@
+import { API_URL } from "./config.js";
+
 const button = document.getElementById("sendButton");
 
 if (button) {
@@ -7,7 +9,7 @@ if (button) {
         const word = document.getElementById("word").value;
         const translation = document.getElementById("translation").value;
 
-        await fetch("http://192.168.1.42:8080/words", {
+        await fetch(`${API_URL}/words`, {
 
             method: "POST",
 
@@ -42,7 +44,7 @@ async function carregarPalavras() {
 
     if (!lista) return;
 
-    const response = await fetch("http://192.168.1.42:8080/words");
+    const response = await fetch(`${API_URL}/words`);
 
     const words = await response.json();
 
@@ -79,7 +81,7 @@ async function editarPalavra(id) {
     // cancela se usuário fechar prompt
     if (!novaPalavra || !novaTraducao) return;
 
-    await fetch("http://192.168.1.42:8080/words", {
+    await fetch(`${API_URL}/words`, {
 
         method: "PUT",
 
@@ -106,7 +108,7 @@ async function excluirPalavra(id) {
 
     if (!confirmar) return;
 
-    await fetch(`http://192.168.1.42:8080/words/${id}`, {
+    await fetch(`${API_URL}/words/${id}`, {
 
         method: "DELETE"
 
