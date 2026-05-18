@@ -9,10 +9,6 @@ async function carregarDecks() {
         deckList.innerHTML += `
             <li style="display: flex; justify-content: space-between; align-items: center;">
                 <span>${deck.name}</span>
-                <div class="acoes">
-                    <button class="editdelete" style="background-color: #87CEEB ; margin: 10px;" onclick="editarDeck(${deck.id})">Editar</button>
-                    <button class="editdelete" style="background-color: #CD5C5C;" onclick="deletarDeck(${deck.id})">Excluir</button>
-                </div>
             </li>
         `;
     });

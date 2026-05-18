@@ -73,7 +73,7 @@ async function carregarPalavras() {
 }
 
 
-async function editarPalavra(id) {
+window.editarPalavra = async (id) => {
 
     const novaPalavra = prompt("Nova palavra:");
     const novaTraducao = prompt("Nova tradução:");
@@ -101,7 +101,7 @@ async function editarPalavra(id) {
 }
 
 
-async function excluirPalavra(id) {
+window.excluirPalavra = async (id) => {
 
     const confirmar = confirm("Deseja excluir essa palavra?");
 
