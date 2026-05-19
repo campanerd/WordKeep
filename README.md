@@ -16,6 +16,7 @@ WordKeep é uma aplicação para estudo de vocabulário em inglês. O usuário c
 - Flyway (migrations)
 - Bean Validation
 - Lombok
+- WebClient (Spring WebFlux) — integração com MyMemory API
 
 **Frontend**
 - HTML
@@ -47,8 +48,8 @@ WordKeep/
 - [x] Listagem de palavras por deck
 - [x] Atualização de palavras e decks
 - [x] Prevenção de palavras duplicadas no mesmo deck
-- [ ] Remoção de palavras e decks
-- [ ] Tradução automática via API externa
+- [x] Remoção de palavras e decks
+- [x] Tradução automática via MyMemory API (en → pt-BR)
 - [ ] Tratamento global de erros
 
 ---
@@ -70,21 +71,32 @@ A API estará disponível em `http://localhost:8080`.
 
 ### Frontend
 
-Abra o arquivo `frontend/src/index.html` em um servidor local (ex: Live Server no VS Code).
+1. Crie o arquivo `frontend/src/config.js` com o IP do backend:
+
+```js
+export const API_URL = "http://localhost:8080";
+```
+
+> ⚠️ Este arquivo não está no repositório pois contém o IP local de cada máquina. Cada desenvolvedor deve criá-lo manualmente.
+
+2. Abra o projeto com um servidor local (ex: Live Server no VS Code).
 
 ---
 
 ## Endpoints principais
 
-| Método | Rota                  | Descrição                        |
-|--------|-----------------------|----------------------------------|
-| POST   | `/words`              | Cadastrar palavra                |
-| GET    | `/words`              | Listar todas as palavras         |
-| PUT    | `/words`              | Atualizar palavra                |
-| POST   | `/decks`              | Cadastrar deck                   |
-| GET    | `/decks`              | Listar todos os decks            |
-| PUT    | `/decks`              | Atualizar deck                   |
-| GET    | `/decks/{id}/words`   | Listar palavras de um deck       |
+| Método | Rota                                                              | Descrição                        |
+|--------|-------------------------------------------------------------------|----------------------------------|
+| POST   | `/words`                                                          | Cadastrar palavra                |
+| GET    | `/words`                                                          | Listar todas as palavras         |
+| PUT    | `/words`                                                          | Atualizar palavra                |
+| DELETE | `/words/{id}`                                                     | Excluir palavra                  |
+| GET    | `/words/translate?word={word}&sourceLanguage={src}&targetLanguage={tgt}` | Traduzir palavra          |
+| POST   | `/decks`                                                          | Cadastrar deck                   |
+| GET    | `/decks`                                                          | Listar todos os decks            |
+| PUT    | `/decks`                                                          | Atualizar deck                   |
+| DELETE | `/decks/{id}`                                                     | Excluir deck e suas palavras     |
+| GET    | `/decks/{id}/words`                                               | Listar palavras de um deck       |
 
 ---
 
