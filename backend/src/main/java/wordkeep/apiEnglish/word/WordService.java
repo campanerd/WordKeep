@@ -31,6 +31,8 @@ public class WordService {
         }
         String translation = translationService.traduzir(dados.word(), "en", "pt-BR");
         word.setTranslation(translation);
+        word.setSourceLanguage("en");
+        word.setTargetLanguage("pt-BR");
 
         wordRepository.save(word);
     }

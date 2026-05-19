@@ -23,9 +23,12 @@ public class Word {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String word;
+
+    @Setter
     private String sourceLanguage;
+
+    @Setter
     private String targetLanguage;
 
     @Convert(converter = LocalDateTimeConverter.class)
