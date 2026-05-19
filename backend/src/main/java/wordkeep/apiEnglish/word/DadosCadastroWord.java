@@ -7,11 +7,5 @@ public record DadosCadastroWord(
         @NotBlank
         String word,
 
-        String translation,
-
-        String sourceLanguage,
-
-        String targetLanguage,
-
         Long deckId) {
 }

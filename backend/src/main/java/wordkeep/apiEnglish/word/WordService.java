@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 import wordkeep.apiEnglish.deck.DeckRepository;
+import wordkeep.apiEnglish.translation.TranslationService;
 
 @Service
 public class WordService {
@@ -14,6 +15,9 @@ public class WordService {
 
     @Autowired
     private DeckRepository deckRepository;
+
+    @Autowired
+    private TranslationService translationService;
 
     public void cadastrar(DadosCadastroWord dados) {
         Word word = new Word(dados);
@@ -25,6 +29,8 @@ public class WordService {
             }
             deckRepository.findById(dados.deckId()).ifPresent(word::adicionarDeck);
         }
+        String translation = translationService.traduzir(dados.word(), "en", "pt-BR");
+        word.setTranslation(translation);
 
         wordRepository.save(word);
     }

@@ -2,10 +2,7 @@ package wordkeep.apiEnglish.word;
 
 import jakarta.persistence.*;
 import jakarta.validation.Valid;
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import jakarta.persistence.Convert;
 import wordkeep.apiEnglish.config.LocalDateTimeConverter;
@@ -28,12 +25,14 @@ public class Word {
     private Long id;
 
     private String word;
-    private String translation;
     private String sourceLanguage;
     private String targetLanguage;
 
     @Convert(converter = LocalDateTimeConverter.class)
     private LocalDateTime createdAt;
+
+    @Setter
+    private String translation;
 
     @ManyToMany
     @JoinTable(
@@ -46,9 +45,6 @@ public class Word {
     public Word(DadosCadastroWord dados) {
 
         this.word = dados.word();
-        this.translation = dados.translation();
-        this.sourceLanguage = dados.sourceLanguage();
-        this.targetLanguage = dados.targetLanguage();
         this.createdAt = LocalDateTime.now();
         this.decks = new ArrayList<>();
     }
