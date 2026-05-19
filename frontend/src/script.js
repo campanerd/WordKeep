@@ -10,7 +10,7 @@ async function carregarDecks() {
 
     const decks = await response.json();
 
-    const deckList = document.getElementById("deckSelect");
+    const deckList = document.getElementById("deckList");
 
     deckList.innerHTML = "";
 
