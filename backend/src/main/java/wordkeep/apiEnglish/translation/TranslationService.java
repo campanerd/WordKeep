@@ -18,7 +18,8 @@ public class TranslationService {
                         .queryParam("langpair", sourceLanguage + "|" + targetLanguage)
                         .build())
                 .retrieve()
-                .bodyToMono(String.class)
+                .bodyToMono(MyMemoryResponse.class)
+                .map(response -> response.responseData().translatedText())
                 .block();
     }
 }
