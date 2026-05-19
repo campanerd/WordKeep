@@ -33,6 +33,7 @@ button{
     top: 100px;
     transition: 0.3s;
     color: white;
+    margin: 20px;
 }
 button:hover{
     transform: translateY(-5px) scale(1.05);
@@ -40,7 +41,7 @@ button:hover{
 }
 
 footer{
-    margin-top: auto;
+     margin-top: auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -66,70 +67,43 @@ img:hover{
     transform: translateY(-5px) scale(1.05);
 
 }
-.container-palavras{
 
+.deck-container{
     display: flex;
-
+    flex-wrap: wrap;
+    gap: 25px;
     justify-content: center;
-
-    margin-top: 20px;
 }
-#lista{
-      width: 400px;
 
-    list-style: none;
-
-    padding: 20px;
-
-    background-color: rgb(212, 207, 207);
-
-    border-radius: 15px;
-
-    box-shadow: 0px 4px 10px rgba(0,0,0,0.2);
-}
-#lista li{
-
-    background-color: #f1f1f1;
-
-    margin-bottom: 10px;
-
-    padding: 10px;
-
-    border-radius: 10px;
-
-    font-size: 18px;
-
-}
-.input {
-     display: flex;
-
-    flex-direction: column;
-
-    align-items: center;
-
-    gap: 15px;
-
-    margin-top: 20px;
-}
-.inputtext{
-
-    display: flex;
-
-    gap: 20px;
-
-}
-.inputtext input{
-
+.deck-card{
+    background: white;
     width: 300px;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 
-    height: 50px;
+    transition: 0.2s;
+}
 
+.deck-card:hover{
+    transform: translateY(-5px);
+}
+
+.deck-card h2{
+    margin-top: 0;
+    color: #222;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+}
+
+.lista-palavras{
+    list-style: none;
+    padding: 0;
+}
+
+.palavra{
+    background: #f0f0f0;
+    margin: 8px 0;
     padding: 10px;
-
-    font-size: 18px;
-
-    border-radius: 10px;
-
-    border: 1px solid #ccc;
-
+    border-radius: 8px;
 }
