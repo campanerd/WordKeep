@@ -1,6 +1,7 @@
 package wordkeep.apiEnglish.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -15,10 +16,10 @@ public class TranslationController {
     private TranslationService service;
 
     @GetMapping("/translate")
-    public String traduzir(
+    public ResponseEntity<String> traduzir(
             @RequestParam String word,
             @RequestParam String sourceLanguage,
             @RequestParam String targetLanguage) {
-        return service.traduzir(word, sourceLanguage, targetLanguage);
+        return ResponseEntity.ok(service.traduzir(word, sourceLanguage, targetLanguage));
     }
 }
