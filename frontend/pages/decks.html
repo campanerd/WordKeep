@@ -1,13 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WordKeep</title>
-    <link rel="stylesheet" href="../src/style.css">
+
+    <link rel="stylesheet" href="../src/visualizar.css">
+
+    <title>Meus Decks</title>
 </head>
 <body>
-    <h1> WordKeep</h1>
+
+    <h1 class="titulo">Meus Decks</h1>
     <div class="container">
         <div class="buttons">
             <a href="../index.html"> 
@@ -15,25 +18,9 @@
             </a>
         </div>
     </div>
-  
-        <div class="input">
-            
-            <div class="inputtext">
-                <input type="text" id="deck" placeholder="Nome do deck"> 
-            </div>
-            <button id="sendButton">
-                Criar deck
-            </button> 
+    
+    <div id="deckList" class="deck-container"></div>
 
-        </div>
-
-    <div class="container-palavras">
-
-        <ul id="deckList"></ul>
-
-    </div>
-
-   
     <footer>
 
     <a href="https://github.com/campanerd">
@@ -57,6 +44,6 @@
 
 </footer>
 
-    <script type="module" src="../src/decks.js"></script>
+    <script type="module" src="../src/exibirDeck.js"></script>
 </body>
 </html>

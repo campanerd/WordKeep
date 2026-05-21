@@ -39,3 +39,4 @@ build/
 
 ### Frontend config (contém IP local, não deve subir ao Git) ###
 frontend/src/config.js
+frontend/src/index.js
