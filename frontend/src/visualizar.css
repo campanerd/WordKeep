@@ -73,6 +73,7 @@ img:hover{
     flex-wrap: wrap;
     gap: 25px;
     justify-content: center;
+    margin: 20px;
 }
 
 .deck-card{
@@ -106,4 +107,9 @@ img:hover{
     margin: 8px 0;
     padding: 10px;
     border-radius: 8px;
+}
+.home-buttons a {
+
+    text-decoration: none;
+
 }

@@ -1,6 +1,8 @@
- window.carregarDecks = async () => {
+    import { API_URL } from "./config.js";
+    
+    window.carregarDecks = async () => {
 
-    const response = await fetch("http://192.168.1.42:8080/decks");
+    const response = await fetch(`${API_URL}/decks`);
 
     const decks = await response.json();
 
@@ -11,7 +13,7 @@
     for (const deck of decks) {
 
         const wordsResponse = await fetch(
-            `http://192.168.1.42:8080/decks/${deck.id}/words`
+        `${API_URL}/decks/${deck.id}/words`
         );
 
         const words = await wordsResponse.json();

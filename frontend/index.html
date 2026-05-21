@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <title>WordKeep</title>
-    <link rel="stylesheet" href="src/style.css">
+    <link rel="stylesheet" href="src/visualizar.css">
 
 </head>
 
@@ -16,28 +16,24 @@
     <h1> WordKeep</h1>
 
     <div class="container">
-
         <div class="home-buttons">
-            <a href="pages/criar.html"> 
+            <a href="pages/criarPalavra.html"> 
             <button>Cadastrar Palavra</button>
             </a>
             <a href="pages/editar.html"> 
             <button>Editar Palavras</button>
             </a>
-            <a href="pages/decks.html"> 
+            <a href="pages/criarDecks.html"> 
             <button>Criar lista</button>
-            </a>
-            <a href="pages/link.html"> 
-            <button>Ver Decks</button>
             </a>
         </div>
 
     </div>
-    <div class="container-palavras">
 
-        <ul id="deckList"></ul>
-
+    <div id="deckList" class="deck-container">
+        <a href="pages/visualizarDecks.html">Visualizar Decks</a>
     </div>
+
     <footer>
 
     <a href="https://github.com/campanerd">
@@ -58,7 +54,7 @@
     <a href="https://github.com/regazzio">
         <img src="public/github.png">
     </a>
-<script src="src/index.js"></script>
+<script type="module" src="src/exibirDeck.js"></script>
 </footer>
 </body>
 </html>
