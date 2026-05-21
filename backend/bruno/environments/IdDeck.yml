@@ -1,0 +1,4 @@
+name: IdDeck
+variables:
+  - name: id_Deck
+    value: "14"
