@@ -1,11 +1,11 @@
 info:
   name: Cadastro de Decks
   type: http
-  seq: 2
+  seq: 1
 
 http:
   method: POST
-  url: http://localhost:8080/decks
+  url: "{{baseUrl}}/decks"
   body:
     type: json
     data: |-

@@ -1,16 +1,16 @@
 info:
   name: Atualização de Decks
   type: http
-  seq: 7
+  seq: 6
 
 http:
   method: PUT
-  url: http://localhost:8080/decks
+  url: "{{baseUrl}}/decks"
   body:
     type: json
     data: |-
       {
-        "id": 1,
+        "id": 14,
         "name": "Vocabulary"
       }
   auth: inherit

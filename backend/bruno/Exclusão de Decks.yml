@@ -1,11 +1,11 @@
 info:
   name: Exclusão de Decks
   type: http
-  seq: 10
+  seq: 9
 
 http:
   method: DELETE
-  url: ""
+  url: "{{baseUrl}}/decks/1"
   auth: inherit
 
 settings:

@@ -1,7 +1,7 @@
 info:
   name: Primeiro Teste Retorno da API
   type: http
-  seq: 11
+  seq: 10
 
 http:
   method: GET

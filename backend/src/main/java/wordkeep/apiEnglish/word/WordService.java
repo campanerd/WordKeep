@@ -27,7 +27,10 @@ public class WordService {
                 throw new ResponseStatusException(HttpStatus.CONFLICT,
                         "A palavra '" + dados.word() + "' já existe neste deck.");
             }
-            deckRepository.findById(dados.deckId()).ifPresent(word::adicionarDeck);
+            var deck = deckRepository.findById(dados.deckId())
+                    .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
+                            "Deck com id " + dados.deckId() + " não encontrado."));
+            word.adicionarDeck(deck);
         }
         String translation = translationService.traduzir(dados.word(), "en", "pt-BR");
         word.setTranslation(translation);

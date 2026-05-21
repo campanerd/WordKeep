@@ -5,15 +5,13 @@ info:
 
 http:
   method: POST
-  url: http://localhost:8080/words
+  url: "{{baseUrl}}/words"
   body:
     type: json
     data: |-
       {
-        "word": "teste2"
-        "translation":"testtwo",
-        "sourceLanguage":"en",
-        "targetLanguage": "pt"
+          "word": "by",
+          "deckId": 1
       }
   auth: inherit
 
