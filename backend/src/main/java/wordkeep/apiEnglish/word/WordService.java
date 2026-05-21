@@ -19,7 +19,7 @@ public class WordService {
     @Autowired
     private TranslationService translationService;
 
-    public void cadastrar(DadosCadastroWord dados) {
+    public Word cadastrar(DadosCadastroWord dados) {
         Word word = new Word(dados);
 
         if (dados.deckId() != null) {
@@ -34,6 +34,6 @@ public class WordService {
         word.setSourceLanguage("en");
         word.setTargetLanguage("pt-BR");
 
-        wordRepository.save(word);
+        return wordRepository.save(word);
     }
 }
