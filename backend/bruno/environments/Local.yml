@@ -1,4 +1,8 @@
 name: Local
 variables:
   - name: baseUrl
-    value: http://localhost:8080
+    value: http://192.68.1.42:8080
+  - name: id_Deck
+    value: "20"
+  - name: id_Word
+    value: "20"
