@@ -196,3 +196,44 @@ img:hover{
 .deck-card.ativo.slide-esquerda {
     animation: slideEsquerda-ativo 0.4s ease forwards;
 }
+#deckList {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+
+    transition: transform 0.35s ease;
+
+    will-change: transform;
+}
+
+/* TODOS OS DECKS */
+.deck-card {
+
+    width: 300px;
+
+    transition:
+        transform 0.4s ease,
+        opacity 0.4s ease,
+        filter 0.4s ease;
+
+    transform: scale(0.78);
+
+    opacity: 0.45;
+
+    filter: blur(1px);
+
+    z-index: 1;
+}
+
+/* DECK CENTRAL */
+.deck-card.ativo {
+
+    transform: scale(1);
+
+    opacity: 1;
+
+    filter: blur(0);
+
+    z-index: 10;
+}

@@ -8,6 +8,11 @@ http:
   url: "{{baseUrl}}/decks/14/words"
   auth: inherit
 
+runtime:
+  variables:
+    - name: baseUrl
+      value: ""
+
 settings:
   encodeUrl: true
   timeout: 0
