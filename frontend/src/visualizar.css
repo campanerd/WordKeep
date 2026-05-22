@@ -19,12 +19,12 @@
 
 .carrossel-container {
     display: flex;
-    align-items: center;
+    align-items: center;       /* setas alinhadas ao meio do card; card centralizado sem cortar */
     justify-content: center;
     gap: 20px;
     padding: 20px;
     overflow: hidden;
-    min-height: 480px;
+    min-height: 480px;         /* caber o card em scale(1.25) sem cortar */
 }
 
 .deck-container {
@@ -35,26 +35,31 @@
     margin: 20px;
     opacity: 1;
     transition: opacity 0.3s ease;
+    font-size: 10px;
 }
 
 
 .deck-card {
     background: white;
-    width: 280px;
-    height: 400px;
+    width: 300px;
+    height: 340px;
     overflow-y: auto;
     padding: 20px;
     border-radius: 15px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    transform: scale(0.85);
-    opacity: 0.6;
-    transition: transform 0.4s ease, box-shadow 0.4s ease, opacity 0.4s ease;
+    transform: scale(0.8);
+    opacity: 0.5;
+    filter: blur(1px);
+    z-index: 1;
+    transition: transform 0.4s ease, opacity 0.4s ease, filter 0.4s ease, box-shadow 0.4s ease;
 }
 
 .deck-card.ativo {
-    transform: scale(1);
+    transform: scale(1.25);
     opacity: 1;
+    filter: blur(0);
     box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    z-index: 10;
 }
 
 .deck-card h2 {
@@ -134,39 +139,23 @@
     justify-content: center;
     align-items: center;
     gap: 20px;
-
     transition: transform 0.35s ease;
-
     will-change: transform;
 }
 
-/* TODOS OS DECKS */
-.deck-card {
-
-    width: 300px;
-
-    transition:
-        transform 0.4s ease,
-        opacity 0.4s ease,
-        filter 0.4s ease;
-
-    transform: scale(0.78);
-
-    opacity: 0.45;
-
-    filter: blur(1px);
-
-    z-index: 1;
+.home-buttons {
+    position: absolute;      /* tira do fluxo p/ não empurrar o carrossel pra baixo */
+    top: 20px;
+    right: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;   /* alinha os botões à direita */
+    gap: 8px;
 }
 
-/* DECK CENTRAL */
-.deck-card.ativo {
-
-    transform: scale(1);
-
-    opacity: 1;
-
-    filter: blur(0);
-
-    z-index: 10;
+.home-buttons button {
+    width: 150px;
+    height: 45px;
+    font-size: 14px;
+    margin: 0;   /* remove o margin: 20px herdado, o gap já cuida do espaço */
 }
