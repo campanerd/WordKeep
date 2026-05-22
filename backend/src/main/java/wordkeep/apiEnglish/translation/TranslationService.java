@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 
+import java.time.Duration;
+
 @Service
 public class TranslationService {
 
@@ -20,6 +22,8 @@ public class TranslationService {
                 .retrieve()
                 .bodyToMono(MyMemoryResponse.class)
                 .map(response -> response.responseData().translatedText())
+                .timeout(Duration.ofSeconds(5))
+                .onErrorReturn("")
                 .block();
     }
 }
