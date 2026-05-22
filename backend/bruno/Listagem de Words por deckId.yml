@@ -5,13 +5,8 @@ info:
 
 http:
   method: GET
-  url: "{{baseUrl}}/decks/14/words"
+  url: "{{baseUrl}}/decks/{{idDeck}}/words"
   auth: inherit
-
-runtime:
-  variables:
-    - name: baseUrl
-      value: ""
 
 settings:
   encodeUrl: true

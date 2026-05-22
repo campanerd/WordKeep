@@ -2,3 +2,7 @@ name: Local
 variables:
   - name: baseUrl
     value: http://localhost:8080
+  - name: idWord
+    value: "14"
+  - name: idDeck
+    value: "20"
