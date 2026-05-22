@@ -36,9 +36,7 @@ public class WordController {
     @Transactional
     @PutMapping
     public ResponseEntity<DadosDetalhamentoWord> atualizar(@RequestBody @Valid DadosAtualizacaoWord dados) {
-        var word = wordRepository.getReferenceById(dados.id());
-        word.atualizarInformacoes(dados);
-
+        var word = service.atualizar(dados);
         return ResponseEntity.ok(new DadosDetalhamentoWord(word));
     }
 

@@ -7,7 +7,5 @@ public record DadosAtualizacaoWord(
         @NotNull
         Long id,
 
-        String word,
-
-        String translation) {
+        String word) {
 }

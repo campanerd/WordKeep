@@ -39,4 +39,18 @@ public class WordService {
 
         return wordRepository.save(word);
     }
+
+
+    public Word atualizar(DadosAtualizacaoWord dados) {
+        Word word = wordRepository.getReferenceById(dados.id());
+
+        if (dados.word() != null) {
+            String translation = translationService.traduzir(dados.word(), "en", "pt-BR");
+            word.setTranslation(translation);
+            word.atualizarInformacoes(dados);
+        }
+
+        return word;
+    }
+    
 }

@@ -60,8 +60,6 @@ public class Word {
         if (dados.word() != null) {
             this.word = dados.word();
         }
-        if (dados.translation() != null) {
-            this.translation = dados.translation();
-        }
     }
+
 }
