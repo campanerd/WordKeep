@@ -1,5 +1,3 @@
-/* Estilos específicos das telas de visualização (carrossel/decks) */
-
 .buttons {
     display: flex;
     gap: 300px;
@@ -19,12 +17,12 @@
 
 .carrossel-container {
     display: flex;
-    align-items: center;       /* setas alinhadas ao meio do card; card centralizado sem cortar */
+    align-items: center;      
     justify-content: center;
     gap: 20px;
     padding: 20px;
     overflow: hidden;
-    min-height: 480px;         /* caber o card em scale(1.25) sem cortar */
+    min-height: 480px;         
 }
 
 .deck-container {
@@ -35,17 +33,16 @@
     margin: 20px;
     opacity: 1;
     transition: opacity 0.3s ease;
-    font-size: 10px;
+    font-size: 15px;
 }
-
 
 .deck-card {
     background: white;
-    width: 300px;
-    height: 340px;
+    width: 500px;
+    height: 440px;
     overflow-y: auto;
-    padding: 20px;
-    border-radius: 15px;
+    padding: 30px;
+    border-radius: 20px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     transform: scale(0.8);
     opacity: 0.5;
@@ -55,7 +52,7 @@
 }
 
 .deck-card.ativo {
-    transform: scale(1.25);
+    transform: scale(2);
     opacity: 1;
     filter: blur(0);
     box-shadow: 0 8px 20px rgba(0,0,0,0.2);
@@ -67,10 +64,11 @@
     color: #222;
     border-bottom: 2px solid #eee;
     padding-bottom: 10px;
+    font-size: 25px;
 }
 
 .deck-card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-5px) scale(0.85);
 }
 
 .deck-card.ativo:hover {
@@ -144,12 +142,12 @@
 }
 
 .home-buttons {
-    position: absolute;      /* tira do fluxo p/ não empurrar o carrossel pra baixo */
+    position: absolute;      
     top: 20px;
     right: 30px;
     display: flex;
     flex-direction: column;
-    align-items: flex-end;   /* alinha os botões à direita */
+    align-items: flex-end;   
     gap: 8px;
 }
 
@@ -157,5 +155,37 @@
     width: 150px;
     height: 45px;
     font-size: 14px;
-    margin: 0;   /* remove o margin: 20px herdado, o gap já cuida do espaço */
+    margin: 0;   
+}
+#deckList {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    transition: transform 0.35s ease;
+    will-change: transform;
+}
+
+
+.deck-card {
+    width: 300px;
+    transition:
+        transform 0.4s ease,
+        opacity 0.4s ease,
+        filter 0.4s ease;
+    transform: scale(0.78);
+    opacity: 0.45;
+    filter: blur(1px);
+    z-index: 1;
+}
+
+.deck-card.ativo {
+
+    transform: scale(1);
+
+    opacity: 1;
+
+    filter: blur(0);
+
+    z-index: 10;
 }
