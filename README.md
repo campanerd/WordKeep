@@ -4,10 +4,11 @@
   <img src="https://img.shields.io/badge/Java-17-blue?logo=openjdk" alt="Java 17"/>
   <img src="https://img.shields.io/badge/Spring%20Boot-3.4.5-brightgreen?logo=springboot" alt="Spring Boot"/>
   <img src="https://img.shields.io/badge/SQLite-embedded-lightgrey?logo=sqlite" alt="SQLite"/>
+  <img src="https://img.shields.io/badge/API%20docs-Swagger-85EA2D?logo=swagger&logoColor=black" alt="Swagger"/>
   <img src="https://img.shields.io/badge/status-em%20desenvolvimento-yellow" alt="Status"/>
 </p>
 
-> Aplicação web para estudo de vocabulário em inglês. Cadastre palavras, organize-as em decks temáticos e revise quando quiser — com tradução automática integrada via [MyMemory API](https://mymemory.translated.net/).
+> Aplicação web para estudo de vocabulário em inglês. Cadastre palavras, organize-as em listas temáticas, estude com flashcards e revise quando quiser — com tradução automática integrada via [MyMemory API](https://mymemory.translated.net/).
 
 ---
 
@@ -17,7 +18,7 @@
 - [Tecnologias](#tecnologias)
 - [Estrutura do projeto](#estrutura-do-projeto)
 - [Como executar](#como-executar)
-- [Endpoints da API](#endpoints-da-api)
+- [Documentação da API](#documentação-da-api)
 - [Autores](#autores)
 
 ---
@@ -26,14 +27,17 @@
 
 | Status | Funcionalidade |
 |--------|---------------|
-| ✅ | Cadastro de palavras com tradução automática (en → pt-BR via MyMemory API) |
-| ✅ | Criação e gerenciamento de decks temáticos |
-| ✅ | Associação de palavras a decks |
-| ✅ | Visualização de decks em carrossel interativo |
-| ✅ | Edição e remoção de palavras e decks |
-| ✅ | Prevenção de duplicatas no mesmo deck |
-| ✅ | Tratamento global de erros na API |
-| 🔜 | Sistema de revisão com flashcards |
+| ✅ | Cadastro de palavras com tradução automática (en → pt-BR) |
+| ✅ | Recusa do cadastro quando a tradução não é encontrada |
+| ✅ | Listas temáticas: criar, renomear e excluir |
+| ✅ | Mesma palavra em **várias listas** (relação muitos-para-muitos) |
+| ✅ | Remover palavra de uma lista específica (some só quando fica sem nenhuma) |
+| ✅ | Modo de estudo com **flashcards** (virar, navegar e embaralhar) |
+| ✅ | Tema claro/escuro com preferência salva no navegador |
+| ✅ | Prevenção de duplicatas na mesma lista |
+| ✅ | Tratamento global de erros (400 / 404 / 409 / 422) |
+| ✅ | Documentação interativa da API (Swagger/OpenAPI) |
+| 🔜 | Usuários e autenticação |
 
 ---
 
@@ -51,13 +55,14 @@
 | Bean Validation | — | Validação de dados |
 | Lombok | — | Redução de boilerplate |
 | Spring WebFlux (WebClient) | — | Integração com MyMemory API |
+| springdoc-openapi | — | Documentação Swagger/OpenAPI |
 
 ### Frontend
 | Tecnologia | Uso |
 |------------|-----|
-| HTML5 | Estrutura das páginas |
-| CSS3 | Estilização e animações |
-| JavaScript (ES Modules) | Lógica de interface |
+| HTML5 | Shell único da SPA |
+| CSS3 (variáveis) | Design system, animações e tema claro/escuro |
+| JavaScript (ES Modules) | SPA sem framework — views, roteamento e cliente da API |
 
 ---
 
@@ -71,25 +76,29 @@ WordKeep/
 │   │   ├── word/               # Entidade, DTOs e serviço de palavras
 │   │   ├── deck/               # Entidade, DTOs e serviço de decks
 │   │   ├── translation/        # Integração com MyMemory API
-│   │   └── config/             # CORS, WebClient, conversores
+│   │   └── config/             # CORS, WebClient, OpenAPI (Swagger)
 │   ├── src/main/resources/
 │   │   └── db/migration/       # Scripts Flyway
 │   ├── bruno/                  # Coleção de requisições (Bruno API client)
 │   └── pom.xml
 └── frontend/
-    ├── index.html              # Página principal (carrossel de decks)
-    ├── pages/
-    │   ├── criarPalavra.html   # Cadastro de palavras
-    │   ├── criarDecks.html     # Criação de decks
-    │   ├── editar.html         # Edição de palavras
-    │   └── decks.html          # Listagem de decks
+    ├── index.html              # Shell único da SPA
     └── src/
-        ├── exibirDeck.js       # Lógica do carrossel
-        ├── script.js           # Cadastro de palavras
-        ├── decks.js            # Listagem/gerenciamento de decks
-        ├── criar.js            # Criação de decks
-        ├── edit.js             # Edição de palavras
-        └── config.js           # URL da API (não versionado — veja abaixo)
+        ├── config.js           # URL da API (não versionado — veja abaixo)
+        ├── app.js              # Entry point / roteamento entre as views
+        ├── api/
+        │   └── api.js          # Cliente central da API
+        ├── views/
+        │   ├── decksView.js    # Tela de listas
+        │   ├── deckView.js     # Detalhe da lista (palavras)
+        │   └── studyView.js    # Modo de estudo (flashcards)
+        ├── components/
+        │   ├── modal.js        # Modais de confirmação e de texto
+        │   └── toast.js        # Notificações
+        ├── utils/
+        │   └── dom.js          # Helpers (escapeHtml, spinner, erro)
+        └── styles/
+            └── styles.css      # Design system + tema claro/escuro
 ```
 
 ---
@@ -109,7 +118,7 @@ cd backend
 mvn spring-boot:run
 ```
 
-A API estará disponível em `http://localhost:8080`.
+A API estará disponível em `http://localhost:8080`, e a documentação interativa em `http://localhost:8080/swagger-ui/index.html`.
 
 > **Porta ocupada?** Rode `netstat -ano | findstr :8080` para encontrar o PID e encerre com `taskkill /PID <pid> /F`.
 
@@ -127,171 +136,28 @@ Em seguida, abra `frontend/index.html` com um servidor local.
 
 ---
 
-## Endpoints da API
+## Documentação da API
 
-> **Base URL:** `http://localhost:8080`
->
-> ⚠️ A tradução automática depende da [MyMemory API](https://mymemory.translated.net/). Sem conexão com a internet, o campo `translation` não será preenchido.
+A API é documentada com **OpenAPI/Swagger**. Com o backend rodando, acesse:
 
----
+- **Swagger UI (interativa):** [`http://localhost:8080/swagger-ui/index.html`](http://localhost:8080/swagger-ui/index.html)
+- **OpenAPI (JSON):** `http://localhost:8080/v3/api-docs`
 
-### Palavras
+Lá você encontra todos os endpoints (palavras, listas, associação palavra↔lista e tradução), os schemas dos DTOs e os códigos de resposta — e ainda consegue **testar as requisições direto pelo navegador**.
 
-#### `POST /words` — Cadastrar palavra
-A tradução é gerada automaticamente. Não é possível cadastrar a mesma palavra duas vezes no mesmo deck.
+### Observações
 
-**Request body:**
-```json
-{
-  "word": "serendipity",
-  "deckId": 1
-}
-```
-
-**Response `201 Created`:**
-```json
-{
-  "id": 1,
-  "word": "serendipity",
-  "translation": "serendipidade",
-  "sourceLanguage": "en",
-  "targetLanguage": "pt-BR",
-  "createdAt": "2025-01-01T10:00:00",
-  "decks": [
-    { "id": 1, "name": "Vocabulário Geral" }
-  ]
-}
-```
-
----
-
-#### `GET /words` — Listar todas as palavras
-
-**Response `200 OK`:**
-```json
-[
-  {
-    "id": 1,
-    "word": "serendipity",
-    "translation": "serendipidade",
-    "decks": [{ "id": 1, "name": "Vocabulário Geral" }]
-  }
-]
-```
-
----
-
-#### `PUT /words` — Atualizar palavra
-A tradução é regerada automaticamente ao atualizar a palavra.
-
-**Request body:**
-```json
-{
-  "id": 1,
-  "word": "ephemeral"
-}
-```
-
-**Response `200 OK`:** retorna o objeto completo atualizado (mesmo formato do `POST`).
-
----
-
-#### `DELETE /words/{id}` — Excluir palavra
-
-**Response `204 No Content`**
-
----
-
-#### `GET /words/translate` — Traduzir palavra
-
-**Query params:** `word`, `sourceLanguage`, `targetLanguage`
-
-**Exemplo:** `GET /words/translate?word=hello&sourceLanguage=en&targetLanguage=pt-BR`
-
-**Response `200 OK`:**
-```json
-{
-  "translation": "olá"
-}
-```
-
----
-
-### Decks
-
-#### `POST /decks` — Criar deck
-
-**Request body:**
-```json
-{
-  "name": "Vocabulário Geral"
-}
-```
-
-**Response `201 Created`:**
-```json
-{
-  "id": 1,
-  "name": "Vocabulário Geral",
-  "createdAt": "2025-01-01T10:00:00"
-}
-```
-
----
-
-#### `GET /decks` — Listar todos os decks
-
-**Response `200 OK`:**
-```json
-[
-  { "id": 1, "name": "Vocabulário Geral" }
-]
-```
-
----
-
-#### `PUT /decks` — Atualizar deck
-
-**Request body:**
-```json
-{
-  "id": 1,
-  "name": "Novo Nome"
-}
-```
-
-**Response `200 OK`:** retorna o objeto completo atualizado (mesmo formato do `POST`).
-
----
-
-#### `DELETE /decks/{id}` — Excluir deck
-
-**Response `204 No Content`**
-
----
-
-#### `GET /decks/{id}/words` — Listar palavras de um deck
-
-**Response `200 OK`:**
-```json
-[
-  {
-    "id": 1,
-    "word": "serendipity",
-    "translation": "serendipidade"
-  }
-]
-```
-
----
+- A tradução automática depende da [MyMemory API](https://mymemory.translated.net/). Sem conexão, o cadastro de uma palavra inédita é **recusado** (HTTP 422), já que a tradução é obrigatória.
+- Uma palavra pode pertencer a várias listas. Excluir uma lista remove apenas o vínculo; a palavra só é apagada quando não estiver em **nenhuma** lista.
 
 ### Respostas de erro
 
 | Status | Situação |
 |--------|----------|
 | `400 Bad Request` | Campos obrigatórios ausentes ou inválidos |
-| `404 Not Found` | Deck ou palavra não encontrado(a) |
-| `409 Conflict` | Palavra já cadastrada neste deck |
+| `404 Not Found` | Lista ou palavra não encontrada |
+| `409 Conflict` | Palavra já cadastrada nesta lista |
+| `422 Unprocessable Entity` | Tradução não encontrada para a palavra |
 
 ---
 
