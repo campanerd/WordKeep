@@ -27,7 +27,7 @@ public class TratadorDeErros {
     }
 
     @ExceptionHandler(EntityNotFoundException.class)
-    public ResponseEntity<String> tratarNaoEncontrado(EntityNotFoundException ex) {
+    public ResponseEntity<String> tratarNaoEncontrado() {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Recurso não encontrado.");
     }
 }
