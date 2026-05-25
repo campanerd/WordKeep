@@ -23,7 +23,7 @@ export async function renderDeckView(ctx) {
                     : `<span class="missing">sem tradução</span>`}
                 <span class="spacer"></span>
                 <button class="icon-btn" data-act="edit-word" data-id="${w.id}" title="Editar">&#9998;</button>
-                <button class="icon-btn danger" data-act="del-word" data-id="${w.id}" title="Excluir">&#128465;</button>
+                <button class="icon-btn danger" data-act="del-word" data-id="${w.id}" title="Remover desta lista">&#128465;</button>
             </div>`).join("")}</div>`
         : `<div class="empty">
                 <div class="emoji">&#10024;</div>
@@ -102,14 +102,14 @@ async function editarPalavra(w, ctx) {
 
 async function excluirPalavra(w, ctx) {
     const ok = await confirmDialog({
-        title: "Excluir palavra",
-        message: `Remover "${w.word}"?`,
-        confirmText: "Excluir", danger: true,
+        title: "Remover palavra",
+        message: `Remover "${w.word}" desta lista? Se ela não estiver em nenhuma outra, será excluída de vez.`,
+        confirmText: "Remover", danger: true,
     });
     if (!ok) return;
     try {
-        await api.excluirWord(w.id);
-        toast("Palavra removida.", "success");
+        await api.removerPalavraDoDeck(ctx.state.deckId, w.id);
+        toast("Palavra removida da lista.", "success");
         renderDeckView(ctx);
     } catch (e) { toast(e.message, "error"); }
 }
