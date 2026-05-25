@@ -37,7 +37,7 @@ export async function renderStudy(ctx) {
                 <h1>Estudar: ${escapeHtml(state.deckName)}</h1>
                 <div class="subtitle">Clique no card para virar</div>
             </div>
-            <button class="btn btn-ghost" id="shuffle">&#128256; Embaralhar</button>
+            <button class="btn btn-ghost" id="shuffle">Embaralhar</button>
         </div>
         <div class="study">
             <div class="flashcard" id="card">

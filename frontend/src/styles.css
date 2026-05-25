@@ -3,28 +3,24 @@
     --primary: #0D6EFD;
     --primary-dark: #0b5ed7;
     --primary-soft: #e7f1ff;
-
     --dark: #1E293B;
     --bg: #F4F6F8;
     --surface: #ffffff;
-
     --text: #1E293B;
     --text-muted: #64748b;
     --border: #e2e8f0;
-
     --danger: #ef4444;
     --danger-dark: #dc2626;
     --success: #22c55e;
-
     --radius-sm: 8px;
     --radius: 14px;
     --radius-lg: 20px;
-
     --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.08);
     --shadow: 0 4px 14px rgba(15, 23, 42, 0.10);
     --shadow-lg: 0 12px 32px rgba(15, 23, 42, 0.16);
-
     --transition: 0.2s ease;
+    --toast-bg: #1e293b;
+    --toast-text: #fff;
 }
 
 * {
@@ -224,7 +220,6 @@ main {
     color: var(--danger);
 }
 
-/* ---------------- Deck grid ---------------- */
 .deck-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
@@ -557,14 +552,15 @@ main {
     flex-direction: column;
     gap: 10px;
     z-index: 200;
+    background-color: var(--bg);
 }
 
 .toast {
     display: flex;
     align-items: center;
     gap: 10px;
-    background: var(--dark);
-    color: #fff;
+    background: var(--toastbg);
+    color: var(--toasttext);
     padding: 13px 18px;
     border-radius: var(--radius-sm);
     box-shadow: var(--shadow-lg);

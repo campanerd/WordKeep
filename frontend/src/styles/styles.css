@@ -21,6 +21,8 @@
     --footer-bg: #1E293B;
     --footer-text: #cbd5e1;
     --footer-link: #ffffff;
+    --toast-bg: #1E293B;
+    --toast-text: #ffffff;
 }
 
 * {
@@ -42,6 +44,8 @@
     --footer-bg: #020617;
     --footer-text: #94a3b8;
     --footer-link: #f8fafc;
+    --toast-bg: #f1f5f9;
+    --toast-text: #0f172a;
 }
 .theme-toggle {
     position: absolute;
@@ -587,20 +591,21 @@ main {
     flex-direction: column;
     gap: 10px;
     z-index: 200;
+
 }
 
 .toast {
     display: flex;
     align-items: center;
     gap: 10px;
-    background: var(--dark);
-    color: #fff;
     padding: 13px 18px;
     border-radius: var(--radius-sm);
     box-shadow: var(--shadow-lg);
     font-size: 14px;
     animation: slide-in 0.25s ease;
     max-width: 340px;
+    background: var(--toast-bg);
+    color: var(--toast-text);
 }
 
 .toast.success { background: #15803d; }

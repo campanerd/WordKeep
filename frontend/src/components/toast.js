@@ -1,5 +1,3 @@
-/* Notificações temporárias (toasts) */
-
 export function toast(message, type = "info") {
     const container = document.getElementById("toast-container");
     const t = document.createElement("div");
