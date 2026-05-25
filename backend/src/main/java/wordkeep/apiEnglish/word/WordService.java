@@ -29,14 +29,19 @@ public class WordService {
                     "A palavra '" + dados.word() + "' já existe neste deck.");
         }
 
-        Word word = wordRepository.findFirstByWordIgnoreCase(dados.word())
-                .orElseGet(() -> {
-                    Word nova = new Word(dados);
-                    nova.setTranslation(translationService.traduzir(dados.word(), "en", "pt-BR"));
-                    nova.setSourceLanguage("en");
-                    nova.setTargetLanguage("pt-BR");
-                    return nova;
-                });
+        Word word = wordRepository.findFirstByWordIgnoreCase(dados.word()).orElse(null);
+
+        if (word == null) {
+            String translation = translationService.traduzir(dados.word(), "en", "pt-BR");
+            if (translation.isBlank()) {
+                throw new ResponseStatusException(HttpStatus.UNPROCESSABLE_ENTITY,
+                        "Tradução não encontrada para '" + dados.word() + "'. A palavra não foi salva.");
+            }
+            word = new Word(dados);
+            word.setTranslation(translation);
+            word.setSourceLanguage("en");
+            word.setTargetLanguage("pt-BR");
+        }
 
         word.adicionarDeck(deck);
         return wordRepository.save(word);
