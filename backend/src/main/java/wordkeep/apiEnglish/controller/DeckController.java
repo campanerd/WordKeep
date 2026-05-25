@@ -3,9 +3,11 @@ package wordkeep.apiEnglish.controller;
 
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.util.UriComponentsBuilder;
 import wordkeep.apiEnglish.deck.*;
 import wordkeep.apiEnglish.word.DadosListagemWord;
@@ -45,7 +47,9 @@ public class DeckController {
     @Transactional
     @PutMapping
     public ResponseEntity<DadosDetalhamentoDeck> atualizar(@RequestBody @Valid DadosAtualizacaoDeck dados) {
-        var deck = repository.getReferenceById(dados.id());
+        var deck = repository.findById(dados.id())
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
+                        "Deck com id " + dados.id() + " não encontrado."));
         deck.atualizarInformacoes(dados);
         return ResponseEntity.ok(new DadosDetalhamentoDeck(deck));
     }
@@ -58,5 +62,19 @@ public class DeckController {
 
         return ResponseEntity.noContent().build();
     }
+    @PostMapping("/{deckId}/words/{wordId}")
+    @Transactional
+    public ResponseEntity<Void> adicionarPalavra(@PathVariable Long deckId, @PathVariable Long wordId) {
+        service.adicionarPalavra(deckId, wordId);
+        return ResponseEntity.noContent().build();
+    }
+
+    @DeleteMapping("/{deckId}/words/{wordId}")
+    @Transactional
+    public ResponseEntity<Void> removerPalavra(@PathVariable Long deckId, @PathVariable Long wordId) {
+        service.removerPalavra(deckId, wordId);
+        return ResponseEntity.noContent().build();
+    }
+
 }
 

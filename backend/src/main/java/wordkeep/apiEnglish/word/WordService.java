@@ -20,37 +20,39 @@ public class WordService {
     private TranslationService translationService;
 
     public Word cadastrar(DadosCadastroWord dados) {
-        Word word = new Word(dados);
+        var deck = deckRepository.findById(dados.deckId())
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
+                        "Deck com id " + dados.deckId() + " não encontrado."));
 
-        if (dados.deckId() != null) {
-            if (wordRepository.existsByWordAndDecksId(dados.word(), dados.deckId())) {
-                throw new ResponseStatusException(HttpStatus.CONFLICT,
-                        "A palavra '" + dados.word() + "' já existe neste deck.");
-            }
-            var deck = deckRepository.findById(dados.deckId())
-                    .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
-                            "Deck com id " + dados.deckId() + " não encontrado."));
-            word.adicionarDeck(deck);
+        if (wordRepository.existsByWordIgnoreCaseAndDecksId(dados.word(), dados.deckId())) {
+            throw new ResponseStatusException(HttpStatus.CONFLICT,
+                    "A palavra '" + dados.word() + "' já existe neste deck.");
         }
-        String translation = translationService.traduzir(dados.word(), "en", "pt-BR");
-        word.setTranslation(translation);
-        word.setSourceLanguage("en");
-        word.setTargetLanguage("pt-BR");
 
+        Word word = wordRepository.findFirstByWordIgnoreCase(dados.word())
+                .orElseGet(() -> {
+                    Word nova = new Word(dados);
+                    nova.setTranslation(translationService.traduzir(dados.word(), "en", "pt-BR"));
+                    nova.setSourceLanguage("en");
+                    nova.setTargetLanguage("pt-BR");
+                    return nova;
+                });
+
+        word.adicionarDeck(deck);
         return wordRepository.save(word);
     }
 
 
     public Word atualizar(DadosAtualizacaoWord dados) {
-        Word word = wordRepository.getReferenceById(dados.id());
+        Word word = wordRepository.findById(dados.id())
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
+                        "Palavra com id " + dados.id() + " não encontrada."));
 
         if (dados.word() != null) {
-            String translation = translationService.traduzir(dados.word(), "en", "pt-BR");
-            word.setTranslation(translation);
+            word.setTranslation(translationService.traduzir(dados.word(), "en", "pt-BR"));
             word.atualizarInformacoes(dados);
         }
-
         return word;
     }
-    
+
 }
