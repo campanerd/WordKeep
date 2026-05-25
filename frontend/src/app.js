@@ -17,5 +17,22 @@ function render() {
 }
 
 document.querySelector(".brand").onclick = () => navigate("decks");
+const savedTheme = localStorage.getItem("theme");
 
+if (savedTheme === "dark") {
+    document.body.classList.add("dark-theme");
+
+    document.getElementById("theme-toggle").textContent = "☀️";
+}
 render();
+const themeToggle = document.getElementById("theme-toggle");
+
+themeToggle.onclick = () => {
+    document.body.classList.toggle("dark-theme");
+
+    const darkMode = document.body.classList.contains("dark-theme");
+
+    themeToggle.textContent = darkMode ? "☀️" : "🌙";
+
+    localStorage.setItem("theme", darkMode ? "dark" : "light");
+};

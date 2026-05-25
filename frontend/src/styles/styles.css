@@ -1,35 +1,65 @@
 :root {
     --primary: #0D6EFD;
     --primary-dark: #0b5ed7;
-    --primary-soft: #e7f1ff;
-
+    --primary-soft: #deddfc;
     --dark: #1E293B;
     --bg: #F4F6F8;
     --surface: #ffffff;
-
-    --text: #1E293B;
+    --text: #2f415e;
     --text-muted: #64748b;
     --border: #e2e8f0;
-
     --danger: #ef4444;
     --danger-dark: #dc2626;
     --success: #22c55e;
-
     --radius-sm: 8px;
     --radius: 14px;
     --radius-lg: 20px;
-
     --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.08);
     --shadow: 0 4px 14px rgba(15, 23, 42, 0.10);
     --shadow-lg: 0 12px 32px rgba(15, 23, 42, 0.16);
-
     --transition: 0.2s ease;
+    --footer-bg: #1E293B;
+    --footer-text: #cbd5e1;
+    --footer-link: #ffffff;
 }
 
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+}
+.dark-theme {
+    --bg: #0f172a;
+    --surface: #1e293b;
+    --text: #f8fafc;
+    --text-muted: #88a2c7;
+    --dark: #ffffff;
+    --border: #334155;
+    --primary-soft: #3f4e70;
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.3);
+    --shadow: 0 4px 14px rgba(0,0,0,0.35);
+    --shadow-lg: 0 12px 32px rgba(0,0,0,0.45);
+    --footer-bg: #020617;
+    --footer-text: #94a3b8;
+    --footer-link: #f8fafc;
+}
+.theme-toggle {
+    position: absolute;
+    top: 12px;
+    right: 42px;
+    width: 42px;
+    height: 42px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 18px;
+    background: var(--bg);
+    color: var(--text);
+    transition: var(--transition);
+}
+
+.theme-toggle:hover {
+    transform: scale(1.08);
 }
 
 body {
@@ -53,6 +83,7 @@ body {
     background: var(--surface);
     border-bottom: 1px solid var(--border);
     box-shadow: var(--shadow-sm);
+    position: relative;
 }
 
 .brand {
@@ -276,7 +307,7 @@ main {
     align-items: center;
     gap: 5px;
     background: var(--primary-soft);
-    color: var(--primary);
+    color: var(--text);
     font-size: 12px;
     font-weight: 500;
     padding: 4px 10px;
@@ -580,15 +611,15 @@ main {
 }
 
 footer {
-    background: var(--dark);
-    color: #cbd5e1;
+    background: var(--footer-bg);
+    color: var(--footer-text);
     text-align: center;
     padding: 18px;
     font-size: 13px;
 }
 
 footer a {
-    color: #fff;
+    color: var(--footer-link);
     text-decoration: none;
     font-weight: 500;
 }
