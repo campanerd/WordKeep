@@ -1,9 +1,11 @@
 import { API_URL } from "../config.js";
 
+const BASE = API_URL.replace(/\/+$/, "");
+
 async function request(path, options = {}) {
     let res;
     try {
-        res = await fetch(`${API_URL}${path}`, {
+        res = await fetch(`${BASE}${path}`, {
             headers: { "Content-Type": "application/json" },
             ...options,
         });
