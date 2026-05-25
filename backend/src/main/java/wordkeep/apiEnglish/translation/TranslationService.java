@@ -13,7 +13,7 @@ public class TranslationService {
     private WebClient webClient;
 
     public String traduzir(String word, String sourceLanguage, String targetLanguage) {
-        return webClient.get()
+        String resultado = webClient.get()
                 .uri(uriBuilder -> uriBuilder
                         .path("/get")
                         .queryParam("q", word)
@@ -25,5 +25,10 @@ public class TranslationService {
                 .timeout(Duration.ofSeconds(5))
                 .onErrorReturn("")
                 .block();
+
+        if (resultado == null || resultado.isBlank() || resultado.equalsIgnoreCase(word)) {
+            return "";
+        }
+        return resultado;
     }
 }

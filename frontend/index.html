@@ -1,60 +1,38 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <title>WordKeep</title>
-    <link rel="stylesheet" href="src/base.css">
-    <link rel="stylesheet" href="src/visualizar.css">
-
+    <link rel="stylesheet" href="src/styles/styles.css">
 </head>
 
 <body>
-
-    <header class="cabeca">
-        <a href="../frontend/pages/criarPalavra.html">
-            <img src="public/logo+.png" class="imagenstopo">
-        </a>
-        <a href="../frontend/pages/editar.html"> 
-            <img src="public/pen_icon.png" class="imagenstopo">
-            </a>
-        <a href="../frontend/pages/editar.html">
-            <img src="public/trash.svg" class="imagenstopo">
-        </a>
-        
+    <header class="topbar">
+        <div class="brand" data-nav="decks">
+            Word<span class="dot">Keep</span>
+        </div>
+        <nav id="nav"></nav>
+        <button id="theme-toggle" class="theme-toggle">
+          🌙
+        </button>
     </header>
-    <h1> WordKeep</h1>
 
-    <div class="carrossel-container">
-        <button id="btnAnterior" class="seta" disabled>&#8592;</button>
-        <div id="deckList" class="deck-container"></div>
-        <button id="btnProximo" class="seta">&#8594;</button>
-    </div>
+    <main id="app"></main>
 
     <footer>
+        Desenvolvido por
+        <a href="https://github.com/campanerd" target="_blank">Davi Campaner</a>
+        e
+        <a href="https://github.com/regazzio" target="_blank">Vinicius Regazio</a>
+    </footer>
 
-    <a href="https://github.com/campanerd">
-        <img src="public/github.png">
-    </a>
+    <div id="toast-container"></div>
+    <div id="modal-root"></div>
 
-    <div class="text">
-
-        <p>Desenvolvido por:</p>
-
-        <div class="names">
-            <strong><p>Davi Campaner</p></strong>
-            <strong><p>Vinicius Regazio</p></strong>
-        </div>
-
-    </div>
-
-    <a href="https://github.com/regazzio">
-        <img src="public/github.png">
-    </a>
-<script type="module" src="src/exibirDeck.js"></script>
-</footer>
+    <script type="module" src="src/app.js"></script>
 </body>
 </html>
