@@ -44,4 +44,10 @@ export const api = {
     atualizarWord: (id, word) =>
         request("/words", { method: "PUT", body: JSON.stringify({ id, word }) }),
     excluirWord: (id) => request(`/words/${id}`, { method: "DELETE" }),
+
+    // Associação palavra ↔ deck (ManyToMany)
+    associarPalavraAoDeck: (deckId, wordId) =>
+        request(`/decks/${deckId}/words/${wordId}`, { method: "POST" }),
+    removerPalavraDoDeck: (deckId, wordId) =>
+        request(`/decks/${deckId}/words/${wordId}`, { method: "DELETE" }),
 };
