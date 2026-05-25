@@ -2,10 +2,6 @@ import { renderDecks } from "./views/decksView.js";
 import { renderDeckView } from "./views/deckView.js";
 import { renderStudy } from "./views/studyView.js";
 
-/* ============================================================
-   Roteamento / estado global da SPA
-   ============================================================ */
-
 const state = { view: "decks", deckId: null, deckName: "" };
 
 function navigate(view, params = {}) {

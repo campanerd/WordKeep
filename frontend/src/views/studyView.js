@@ -2,7 +2,7 @@ import { api } from "../api/api.js";
 import { app, escapeHtml, spinner, renderError } from "../utils/dom.js";
 import { toast } from "../components/toast.js";
 
-/** Modo de estudo: flashcards do deck. */
+
 export async function renderStudy(ctx) {
     const { state, navigate } = ctx;
     spinner();

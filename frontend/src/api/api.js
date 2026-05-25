@@ -1,10 +1,5 @@
 import { API_URL } from "../config.js";
 
-/**
- * Wrapper central de requisições.
- * Trata erros (o backend retorna a mensagem em texto puro via TratadorDeErros),
- * respostas 204 (sem corpo) e respostas que são string pura (ex: /translate).
- */
 async function request(path, options = {}) {
     let res;
     try {
@@ -28,7 +23,7 @@ async function request(path, options = {}) {
     try {
         return JSON.parse(text);
     } catch {
-        return text; // string pura (ex: tradução)
+        return text; 
     }
 }
 

@@ -3,7 +3,6 @@ import { app, escapeHtml, spinner, renderError } from "../utils/dom.js";
 import { toast } from "../components/toast.js";
 import { confirmDialog, promptDialog } from "../components/modal.js";
 
-/** Tela inicial: grid de decks. */
 export async function renderDecks({ navigate }) {
     spinner();
     let decks, words;
@@ -13,7 +12,7 @@ export async function renderDecks({ navigate }) {
         return renderError(e.message, () => renderDecks({ navigate }));
     }
 
-    // contagem de palavras por deck (a partir de um único GET /words)
+
     const contagem = {};
     for (const w of words) {
         for (const id of w.deckIds || []) contagem[id] = (contagem[id] || 0) + 1;
@@ -40,14 +39,14 @@ export async function renderDecks({ navigate }) {
     app.innerHTML = `
         <div class="page-head">
             <div>
-                <h1>Meus Decks</h1>
+                <h1>Minhas listas</h1>
                 <div class="subtitle">Organize seu vocabulário em listas temáticas</div>
             </div>
-            <button class="btn btn-primary" id="new-deck">+ Novo Deck</button>
+            <button class="btn btn-primary" id="nova-lista">+ Nova Lista</button>
         </div>
         ${grid}`;
 
-    document.getElementById("new-deck").onclick = () => novoDeck(navigate);
+    document.getElementById("nova-lista").onclick = () => novoDeck(navigate);
 
     app.querySelectorAll(".deck-card").forEach((card) => {
         card.onclick = (e) => {

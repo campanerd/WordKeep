@@ -3,7 +3,6 @@ import { app, escapeHtml, spinner, renderError } from "../utils/dom.js";
 import { toast } from "../components/toast.js";
 import { confirmDialog, promptDialog } from "../components/modal.js";
 
-/** Detalhe de um deck: lista de palavras + ações. */
 export async function renderDeckView(ctx) {
     const { state, navigate } = ctx;
     spinner();
@@ -33,16 +32,16 @@ export async function renderDeckView(ctx) {
            </div>`;
 
     app.innerHTML = `
-        <button class="back-btn" id="back">&larr; Voltar aos decks</button>
+        <button class="back-btn" id="back">&larr; Voltar as listas</button>
         <div class="page-head">
             <div>
                 <h1>${escapeHtml(state.deckName)}</h1>
                 <div class="subtitle">${words.length} palavra${words.length === 1 ? "" : "s"}</div>
             </div>
             <div style="display:flex; gap:10px; flex-wrap:wrap;">
-                <button class="btn btn-ghost" id="study" ${words.length ? "" : "disabled"}>&#127919; Estudar</button>
+                <button class="btn btn-ghost" id="study" ${words.length ? "" : "disabled"}>Estudar</button>
                 <button class="btn btn-ghost" id="rename">Renomear</button>
-                <button class="btn btn-danger" id="del-deck">Excluir deck</button>
+                <button class="btn btn-danger" id="del-deck">Excluir lista</button>
             </div>
         </div>
 
