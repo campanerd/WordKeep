@@ -15,7 +15,7 @@
 ## Pré-visualização
 
 <p align="center">
-  <img src="docs/screenshots/demo/demo.gif" alt="Demonstração do WordKeep" width="800"/>
+  <img src="docs/screenshots/demo/demo.gif" alt="Demonstração do WordKeep" width="500"/>
 </p>
 
 <p align="center">
