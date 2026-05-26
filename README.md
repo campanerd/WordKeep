@@ -5,18 +5,32 @@
   <img src="https://img.shields.io/badge/Spring%20Boot-3.4.5-brightgreen?logo=springboot" alt="Spring Boot"/>
   <img src="https://img.shields.io/badge/SQLite-embedded-lightgrey?logo=sqlite" alt="SQLite"/>
   <img src="https://img.shields.io/badge/API%20docs-Swagger-85EA2D?logo=swagger&logoColor=black" alt="Swagger"/>
-  <img src="https://img.shields.io/badge/status-em%20desenvolvimento-yellow" alt="Status"/>
+  <img src="https://img.shields.io/badge/status-conclu%C3%ADdo-brightgreen" alt="Status"/>
 </p>
 
 > Aplicação web para estudo de vocabulário em inglês. Cadastre palavras, organize-as em listas temáticas, estude com flashcards e revise quando quiser — com tradução automática integrada via [MyMemory API](https://mymemory.translated.net/).
 
 ---
 
+## Pré-visualização
+
+<p align="center">
+  <img src="docs/screenshots/demo/demo.gif" alt="Demonstração do WordKeep" width="800"/>
+</p>
+
+<p align="center">
+  <img src="docs/screenshots/home-mobile.png" alt="Versão mobile" width="280"/>
+</p>
+
+---
+
 ## Sumário
 
+- [Pré-visualização](#pré-visualização)
 - [Funcionalidades](#funcionalidades)
 - [Tecnologias](#tecnologias)
 - [Estrutura do projeto](#estrutura-do-projeto)
+- [Modelagem](#modelagem)
 - [Como executar](#como-executar)
 - [Documentação da API](#documentação-da-api)
 - [Autores](#autores)
@@ -103,6 +117,22 @@ WordKeep/
 
 ---
 
+## Modelagem
+
+### Diagrama de classes
+
+<p align="center">
+  <img src="docs/diagrama%20de%20classes.png" alt="Diagrama de classes" width="700"/>
+</p>
+
+### Esquema do banco
+
+<p align="center">
+  <img src="docs/schema.png" alt="Esquema do banco" width="600"/>
+</p>
+
+---
+
 ## Como executar
 
 ### Pré-requisitos
@@ -144,6 +174,10 @@ A API é documentada com **OpenAPI/Swagger**. Com o backend rodando, acesse:
 - **OpenAPI (JSON):** `http://localhost:8080/v3/api-docs`
 
 Lá você encontra todos os endpoints (palavras, listas, associação palavra↔lista e tradução), os schemas dos DTOs e os códigos de resposta — e ainda consegue **testar as requisições direto pelo navegador**.
+
+<p align="center">
+  <img src="docs/screenshots/api.png" alt="Swagger UI" width="800"/>
+</p>
 
 ### Observações
 
