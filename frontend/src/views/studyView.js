@@ -19,7 +19,6 @@ export async function renderStudy(ctx) {
         app.innerHTML = `
             <button class="back-btn" id="back">&larr; Voltar</button>
             <div class="empty">
-                <div class="emoji">&#127919;</div>
                 <h3>Nada para estudar</h3>
                 <p>Adicione palavras ao deck primeiro.</p>
             </div>`;

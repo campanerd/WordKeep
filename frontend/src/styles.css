@@ -367,10 +367,6 @@ main {
     color: var(--text-muted);
 }
 
-.empty .emoji {
-    font-size: 42px;
-    margin-bottom: 14px;
-}
 
 .empty h3 {
     color: var(--text);

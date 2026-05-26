@@ -31,7 +31,6 @@ export async function renderDecks({ navigate }) {
                 </div>
             </div>`).join("")}</div>`
         : `<div class="empty">
-                <div class="emoji">&#128218;</div>
                 <h3>Nenhum deck ainda</h3>
                 <p>Crie seu primeiro deck para começar a estudar.</p>
            </div>`;
