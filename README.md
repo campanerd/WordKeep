@@ -15,11 +15,9 @@
 ## Pré-visualização
 
 <p align="center">
-  <img src="docs/screenshots/demo/demo.gif" alt="Demonstração do WordKeep" width="500"/>
-</p>
-
-<p align="center">
-  <img src="docs/screenshots/home-mobile.png" alt="Versão mobile" width="280"/>
+  <img src="docs/screenshots/home.png" alt="Tela inicial" width="600"/>
+  &nbsp;
+  <img src="docs/screenshots/home-mobile.png" alt="Versão mobile" width="200"/>
 </p>
 
 ---
