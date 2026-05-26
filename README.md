@@ -15,9 +15,7 @@
 ## Pré-visualização
 
 <p align="center">
-  <img src="docs/screenshots/home.png" alt="Tela inicial" width="600"/>
-  &nbsp;
-  <img src="docs/screenshots/home-mobile.png" alt="Versão mobile" width="200"/>
+  <video src="https://github.com/user-attachments/assets/85e0b02b-c3ad-4d53-a386-50d5fc38c5da" width="800" autoplay muted loop></video>
 </p>
 
 ---
