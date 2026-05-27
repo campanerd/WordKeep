@@ -15,7 +15,9 @@
 ## Pré-visualização
 
 <p align="center">
-  <video src="https://github.com/user-attachments/assets/85e0b02b-c3ad-4d53-a386-50d5fc38c5da" width="800" autoplay muted loop></video>
+  <video src="https://github.com/user-attachments/assets/85e0b02b-c3ad-4d53-a386-50d5fc38c5da" width="800" autoplay muted loop playsinline controls poster="docs/screenshots/home.png">
+    <img src="docs/screenshots/home.png" alt="WordKeep" width="800"/>
+  </video>
 </p>
 
 ---
