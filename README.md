@@ -15,9 +15,13 @@
 ## Pré-visualização
 
 <p align="center">
-  <video src="https://github.com/user-attachments/assets/85e0b02b-c3ad-4d53-a386-50d5fc38c5da" width="800" autoplay muted loop playsinline controls poster="docs/screenshots/home.png">
-    <img src="docs/screenshots/home.png" alt="WordKeep" width="800"/>
-  </video>
+  <img src="docs/screenshots/home.png" alt="Tela inicial" width="700"/>
+</p>
+
+<p align="center">
+  <a href="https://github.com/user-attachments/assets/66a2e116-0b21-4224-bc1f-c7c22e3c30d8">
+    ▶️ Assistir demonstração em vídeo
+  </a>
 </p>
 
 ---
