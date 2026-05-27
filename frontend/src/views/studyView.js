@@ -67,29 +67,25 @@ export async function renderStudy(ctx) {
 
     function mostrar() {
     const w = words[ordem[pos]];
-
-    // se estiver virado, desvira primeiro
     if (card.classList.contains("flipped")) {
 
         card.classList.remove("flipped");
 
-        // espera a animação terminar
         setTimeout(() => {
             frontWord.textContent = w.word;
             backWord.textContent = w.translation || "(sem tradução)";
-        }, 300); // mesmo tempo da animação CSS
+        }, 300); 
 
     } else {
 
         frontWord.textContent = w.word;
         backWord.textContent = w.translation || "(sem tradução)";
     }
-
+    
     progress.textContent = `${pos + 1} / ${words.length}`;
     btnPrev.disabled = pos === 0;
     btnNext.disabled = pos === words.length - 1;
 }
-
     card.onclick = () => card.classList.toggle("flipped");
     btnPrev.onclick = () => { if (pos > 0) { pos--; mostrar(); } };
     btnNext.onclick = () => { if (pos < words.length - 1) { pos++; mostrar(); } };
