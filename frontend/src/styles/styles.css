@@ -484,13 +484,16 @@ main {
 .flashcard-face .word {
     font-size: 32px;
     font-weight: 600;
-    color: var(--dark);
     word-break: break-word;
 }
 
 .flashcard-face.back {
     transform: rotateY(180deg);
-    background: var(--primary-soft);
+    background: var(--primary-soft)
+}
+
+#back-word{
+    color: var(--text);
 }
 
 .flashcard-face.back .word {

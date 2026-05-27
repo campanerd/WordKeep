@@ -26,7 +26,6 @@ export async function renderDeckView(ctx) {
                 <button class="icon-btn danger" data-act="del-word" data-id="${w.id}" title="Remover desta lista">&#128465;</button>
             </div>`).join("")}</div>`
         : `<div class="empty">
-                <div class="emoji">&#10024;</div>
                 <h3>Deck vazio</h3>
                 <p>Adicione palavras em inglês acima — a tradução é automática.</p>
            </div>`;
