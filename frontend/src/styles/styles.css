@@ -23,6 +23,7 @@
     --footer-link: #ffffff;
     --toast-bg: #1E293B;
     --toast-text: #ffffff;
+    --text-bk: #004aa5;
 }
 
 * {
@@ -46,6 +47,7 @@
     --footer-link: #f8fafc;
     --toast-bg: #f1f5f9;
     --toast-text: #0f172a;
+    --text-bk: #ccf5ff;
 }
 .theme-toggle {
     position: absolute;
@@ -480,20 +482,19 @@ main {
     letter-spacing: 1px;
     color: var(--text-muted);
 }
-
+#back-word{
+    color: var(--text-bk);
+}
 .flashcard-face .word {
     font-size: 32px;
     font-weight: 600;
+    color: var(--text);
     word-break: break-word;
 }
 
 .flashcard-face.back {
     transform: rotateY(180deg);
-    background: var(--primary-soft)
-}
-
-#back-word{
-    color: var(--text);
+    background: var(--primary-soft);
 }
 
 .flashcard-face.back .word {
