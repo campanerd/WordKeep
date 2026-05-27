@@ -15,13 +15,7 @@
 ## Pré-visualização
 
 <p align="center">
-  <img src="docs/screenshots/home.png" alt="Tela inicial" width="700"/>
-</p>
-
-<p align="center">
-  <a href="https://github.com/user-attachments/assets/66a2e116-0b21-4224-bc1f-c7c22e3c30d8">
-    ▶️ Assistir demonstração em vídeo
-  </a>
+  <video src="https://github.com/user-attachments/assets/66a2e116-0b21-4224-bc1f-c7c22e3c30d8" width="700"></video>
 </p>
 
 ---
