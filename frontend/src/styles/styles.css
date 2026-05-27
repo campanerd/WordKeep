@@ -38,7 +38,7 @@
     --text-muted: #88a2c7;
     --dark: #ffffff;
     --border: #334155;
-    --primary-soft: #3f4e70;
+    --primary-soft: #2c3855;
     --shadow-sm: 0 1px 3px rgba(0,0,0,0.3);
     --shadow: 0 4px 14px rgba(0,0,0,0.35);
     --shadow-lg: 0 12px 32px rgba(0,0,0,0.45);
@@ -47,7 +47,7 @@
     --footer-link: #f8fafc;
     --toast-bg: #f1f5f9;
     --toast-text: #0f172a;
-    --text-bk: #ccf5ff;
+    --text-bk: #76c8ff;
 }
 .theme-toggle {
     position: absolute;
