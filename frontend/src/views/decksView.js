@@ -51,18 +51,18 @@ export async function renderDecks({ navigate }) {
         card.onclick = (e) => {
             if (e.target.closest("[data-act]")) return; // clicou num botão de ação
             const deck = decks.find((d) => d.id == card.dataset.id);
-            navigate("Lista", { deckId: deck.id, deckName: deck.name });
+            navigate("deck", { deckId: deck.id, deckName: deck.name });
         };
     });
 
     app.querySelectorAll('[data-act="edit"]').forEach((b) => {
         b.onclick = async () => {
             const deck = decks.find((d) => d.id == b.dataset.id);
-            const nome = await promptDialog({ title: "Renomear lista", label: "Nome da lista", value: deck.name });
+            const nome = await promptDialog({ title: "Renomear deck", label: "Nome do deck", value: deck.name });
             if (!nome) return;
             try {
                 await api.atualizarDeck(deck.id, nome);
-                toast("Lista renomeada.", "success");
+                toast("Deck renomeado.", "success");
                 renderDecks({ navigate });
             } catch (e) { toast(e.message, "error"); }
         };
@@ -72,14 +72,14 @@ export async function renderDecks({ navigate }) {
         b.onclick = async () => {
             const deck = decks.find((d) => d.id == b.dataset.id);
             const ok = await confirmDialog({
-                title: "Excluir lista",
-                message: `Excluir "${deck.name}"? Todas as palavras dela também serão removidas.`,
+                title: "Excluir deck",
+                message: `Excluir "${deck.name}"? Todas as palavras dele também serão removidas.`,
                 confirmText: "Excluir", danger: true,
             });
             if (!ok) return;
             try {
                 await api.excluirDeck(deck.id);
-                toast("Lista excluída.", "success");
+                toast("Deck excluído.", "success");
                 renderDecks({ navigate });
             } catch (e) { toast(e.message, "error"); }
         };
@@ -88,13 +88,13 @@ export async function renderDecks({ navigate }) {
 
 async function novoDeck(navigate) {
     const nome = await promptDialog({
-        title: "Nova lista", label: "Nome da lista",
+        title: "Novo deck", label: "Nome do deck",
         placeholder: "Ex: Verbos irregulares", confirmText: "Criar",
     });
     if (!nome) return;
     try {
         const deck = await api.criarDeck(nome);
-        toast("Lista criada.", "success");
-        navigate("Lista", { deckId: deck.id, deckName: deck.name });
+        toast("Deck criado.", "success");
+        navigate("deck", { deckId: deck.id, deckName: deck.name });
     } catch (e) { toast(e.message, "error"); }
 }
