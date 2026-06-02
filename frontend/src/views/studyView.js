@@ -13,14 +13,14 @@ export async function renderStudy(ctx) {
         return renderError(e.message, () => renderStudy(ctx));
     }
 
-    const voltarAoDeck = () => navigate("deck", { deckId: state.deckId, deckName: state.deckName });
+    const voltarAoDeck = () => navigate("Lista", { deckId: state.deckId, deckName: state.deckName });
 
     if (!words.length) {
         app.innerHTML = `
             <button class="back-btn" id="back">&larr; Voltar</button>
             <div class="empty">
                 <h3>Nada para estudar</h3>
-                <p>Adicione palavras ao deck primeiro.</p>
+                <p>Adicione palavras na lista primeiro.</p>
             </div>`;
         document.getElementById("back").onclick = voltarAoDeck;
         return;
@@ -81,7 +81,7 @@ export async function renderStudy(ctx) {
         frontWord.textContent = w.word;
         backWord.textContent = w.translation || "(sem tradução)";
     }
-    
+
     progress.textContent = `${pos + 1} / ${words.length}`;
     btnPrev.disabled = pos === 0;
     btnNext.disabled = pos === words.length - 1;
