@@ -30,7 +30,7 @@ export async function renderStudy(ctx) {
     let pos = 0;
 
     app.innerHTML = `
-        <button class="back-btn" id="back">&larr; Voltar ao deck</button>
+        <button class="back-btn" id="back">&larr; Voltar as listas</button>
         <div class="page-head">
             <div>
                 <h1>Estudar: ${escapeHtml(state.deckName)}</h1>

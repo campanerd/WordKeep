@@ -31,8 +31,8 @@ export async function renderDecks({ navigate }) {
                 </div>
             </div>`).join("")}</div>`
         : `<div class="empty">
-                <h3>Nenhum deck ainda</h3>
-                <p>Crie seu primeiro deck para começar a estudar.</p>
+                <h3>Nenhuma lista ainda</h3>
+                <p>Crie sua primeira lista para começar a estudar.</p>
            </div>`;
 
     app.innerHTML = `
